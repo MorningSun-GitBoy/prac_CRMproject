@@ -25,6 +25,6 @@ public class PrintJson {
     }
     public static void printJsonObj(HttpServletResponse rep,Object obj){
         ObjectMapper om = new ObjectMapper();
-        
+
     }
 }
