@@ -10,4 +10,10 @@ public class DateTimeUtils {
         String dateStr = fmt.format(date);
         return dateStr;
     }
+    public static String getSysDate(){
+        SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date();
+        String dateStr = fmt.format(date);
+        return dateStr;
+    }
 }
