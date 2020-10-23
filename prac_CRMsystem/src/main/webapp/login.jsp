@@ -11,6 +11,55 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
     <script type="text/javascript" src="jquery/jquery-1.11.1-min.js"></script>
     <script type="text/javascript" src="jquery/bootstrap_3.3.0/js/bootstrap.min.js"></script>
     <script>
+        $(function(){
+            //页面加载完毕后，清空用户文本框中的内容
+            $("#loginAct").val("");
+            //得到用户名输入框对象
+            $("#loginAct").focus();//获得焦点focus();丢失焦点blur();
+            //为登录按钮绑定登录操作
+            $("#submitBtn").click(function(){
+                login();
+            })
+            //为窗口绑定键盘事件
+            $(window).keydown(function(event){
+                if(13==event.keyCode){
+                    login();
+                }
+            })
+        })
+        function login(){
+            var loginAct = $.trim($("#loginAct").val());
+            var loginPwd = $.trim($("#loginPwd").val());
+            if(loginAct == "" || loginPwd == ""){
+                $("#msg").html("账号或密码不能为空");
+                return false;//避免执行ajax方法
+            }
+            //通过Ajax进行后台验证
+            $.ajax({
+                url:"users/login.do",
+                data:{
+                    "loginAct":loginAct,
+                    "loginPwd":loginPwd
+                },
+                type:"post",
+                dataType:"json",
+                success:function(data){
+                /*
+                 * data{
+                 *    "success":true/false,
+                 *    "msg":错误信息
+                 * }
+                 */
+                    if(data.success){
+                        //登陆成功则跳转
+                        window.location.href = "workbench/index.jsp";
+                    }else{
+                        //登录失败，则显示提示信息
+                        $("#msg").html(data.msg);
+                    }
+                }
+            })
+        }
     </script>
 </head>
 <body>
