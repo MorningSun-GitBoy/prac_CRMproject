@@ -3,7 +3,7 @@ package com.neau.crm.web.domain;
 public class SysUser {
     private String id;          //编号，主键
     private String loginAct;    //登录账号
-    private String name;        //用户真实姓名
+    private String uname;       //用户真实姓名
     private String loginPWD;    //登录密码
     private String email;       //邮箱
     private String expireTime;  //失效时间
@@ -31,12 +31,12 @@ public class SysUser {
         this.loginAct = loginAct;
     }
 
-    public String getName() {
-        return name;
+    public String getUname() {
+        return uname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUname(String name) {
+        this.uname = uname;
     }
 
     public String getLoginPWD() {
