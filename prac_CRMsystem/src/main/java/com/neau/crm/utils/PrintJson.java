@@ -25,6 +25,13 @@ public class PrintJson {
     }
     public static void printJsonObj(HttpServletResponse rep,Object obj){
         ObjectMapper om = new ObjectMapper();
-
+        try{
+            String json = om.writeValueAsString(obj);
+            rep.getWriter().print(json);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
