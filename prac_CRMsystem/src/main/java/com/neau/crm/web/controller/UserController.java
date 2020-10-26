@@ -3,6 +3,7 @@ package com.neau.crm.web.controller;
 import com.neau.crm.exceptions.LoginException;
 import com.neau.crm.utils.DateTimeUtils;
 import com.neau.crm.utils.MD5Utils;
+import com.neau.crm.utils.PrintJson;
 import com.neau.crm.web.domain.SysUser;
 import com.neau.crm.web.service.UserService;
 import com.neau.crm.web.service.serviceImpl.UserServiceImpl;
@@ -11,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class UserController extends HttpServlet {
     @Override
@@ -34,12 +37,16 @@ public class UserController extends HttpServlet {
         UserService us = new UserServiceImpl();//需改为代理类
         //提取User对象，并放入Session域
         try {
-            SysUser user = us.login(loginAct, loginPwd, ip, DateTimeUtils.getSysTime());
+            SysUser user = us.login(loginAct, loginPwd, ip);
             req.getSession().setAttribute("user", user);
             String json = "{\"success\":true}";
             rep.getWriter().print(json);
         }catch (LoginException  e){
-
+            String msg = e.getMessage();
+            Map<String,Object> map = new HashMap<String,Object>();
+            map.put("success",false);
+            map.put("msg",msg);
+            PrintJson.printJsonObj(rep,map);
         }catch (IOException ie){
             ie.printStackTrace();
         }
