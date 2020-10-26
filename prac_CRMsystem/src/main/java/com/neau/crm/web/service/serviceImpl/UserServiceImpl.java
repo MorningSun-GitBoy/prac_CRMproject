@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserService {
             throw new LoginException("用户已失效，请联系管理员");
         }else if(user.getLockState().equals("1")){//查看锁定位有没有问题
             throw new LoginException("该账户已被锁定，请联系管理员");
-        }else if(!user.getAllowsIps().contains(ip)){//查看登录IP是否符合要求 
+        }else if(!user.getAllowsIps().contains(ip)){//查看登录IP是否符合要求
             throw new LoginException("IP非法，请在合理的位置登录系统");
         }
         return user;
