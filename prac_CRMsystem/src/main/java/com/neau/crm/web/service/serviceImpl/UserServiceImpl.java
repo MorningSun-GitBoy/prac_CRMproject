@@ -14,6 +14,9 @@ public class UserServiceImpl implements UserService {
     private UserDao userDao = ServerSessionUtils.getSqlSession().getMapper(UserDao.class);
     @Override
     public SysUser login (String loginAct, String loginPwd, String ip) throws LoginException {
+        System.out.println(loginAct);
+        System.out.println(loginPwd);
+        System.out.println(ip);
         Map<String,String> logMap = new HashMap<String,String>();
         logMap.put("loginAct",loginAct);
         logMap.put("loginPwd",loginPwd);

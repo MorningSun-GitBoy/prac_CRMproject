@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.neau.crm.web.dao.UserDao">
-    <select id="login" resultType="SysUser">
+    <select id="login" resultType="com.neau.crm.web.domain.SysUser">
         select * from tb_crm_user where loginAct=#{loginAct} and loginPwd=#{loginPwd}
     </select>
 </mapper>

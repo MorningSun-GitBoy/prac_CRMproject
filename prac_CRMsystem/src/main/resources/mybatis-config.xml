@@ -15,4 +15,7 @@
             </dataSource>
         </environment>
     </environments>
+    <mappers>
+        <mapper resource="com/neau/crm/web/dao/UserDao.xml"/>
+    </mappers>
 </configuration>
