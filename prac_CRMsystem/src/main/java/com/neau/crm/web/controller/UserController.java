@@ -41,7 +41,9 @@ public class UserController extends HttpServlet {
             req.getSession().setAttribute("user", user);
             String json = "{\"success\":true}";
             rep.getWriter().print(json);
+            //System.out.println(user.getUname());
         }catch (LoginException  e){
+            e.printStackTrace();
             String msg = e.getMessage();
             Map<String,Object> map = new HashMap<String,Object>();
             map.put("success",false);

@@ -9,7 +9,7 @@ public class SysUser {
     private String expireTime;  //失效时间
     private String lockState;   //锁定状态:0锁定，1开启
     private String deptno;      //部门编号
-    private String allowsIps;   //允许访问IP地址
+    private String allowIps;   //允许访问IP地址
     private String createTime;  //创建时间
     private String createBy;    //创建人
     private String editTime;    //修改时间
@@ -35,7 +35,7 @@ public class SysUser {
         return uname;
     }
 
-    public void setUname(String name) {
+    public void setUname(String uname) {
         this.uname = uname;
     }
 
@@ -79,12 +79,12 @@ public class SysUser {
         this.deptno = deptno;
     }
 
-    public String getAllowsIps() {
-        return allowsIps;
+    public String getAllowIps() {
+        return allowIps;
     }
 
-    public void setAllowsIps(String allowsIps) {
-        this.allowsIps = allowsIps;
+    public void setAllowIps(String allowIps) {
+        this.allowIps = allowIps;
     }
 
     public String getCreateTime() {
