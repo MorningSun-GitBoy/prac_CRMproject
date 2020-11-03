@@ -12,6 +12,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
     <script type="text/javascript" src="jquery/bootstrap_3.3.0/js/bootstrap.min.js"></script>
     <script>
         $(function(){
+            //设置默认顶层窗口
+            if(window.top!=window){
+                window.top = window.location;
+            }
             //页面加载完毕后，清空用户文本框中的内容
             $("#loginAct").val("");
             //得到用户名输入框对象
