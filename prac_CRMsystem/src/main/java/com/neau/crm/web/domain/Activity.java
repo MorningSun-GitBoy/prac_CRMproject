@@ -1,17 +1,17 @@
 package com.neau.crm.web.domain;
 
 public class Activity {
-    private String id;
-    private String owner;
-    private String acname;
-    private String startDate;
-    private String endDate;
-    private String cost;
-    private String description;
-    private String createTime;
-    private String createBy;
-    private String editTime;
-    private String editBy;
+    private String id;              //主键
+    private String owner;           //所有人 外键 关联SysUser.id
+    private String acname;          //活动名称
+    private String startDate;       //开始时间
+    private String endDate;         //结束时间
+    private String cost;            //成本
+    private String description;     //描述
+    private String createTime;      //创建时间
+    private String createBy;        //创建人
+    private String editTime;        //修改时间
+    private String editBy;          //修改人
 
     public String getId() {
         return id;

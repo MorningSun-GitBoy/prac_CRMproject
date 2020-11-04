@@ -37,12 +37,10 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				pickerPosition: "bottom-left"
 			});
 			/*
-
 				操作模态窗口的方式：
 
-					需要操作的模态窗口的jquery对象，调用modal方法，为该方法传递参数 show:打开模态窗口   hide：关闭模态窗口
-
-
+					需要操作的模态窗口的jquery对象，调用modal方法，为该方法传递参数
+					 show:打开模态窗口   hide：关闭模态窗口
 			 */
 
 			//alert(123);
@@ -77,15 +75,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 					//将当前登录的用户，设置为下拉框默认的选项
 					/*
-
 						<select id="create-owner">
 							<option value="40f6cdea0bd34aceb77492a1656d9fb3">张三</option>
 							<option value="06f5fc056eac41558a964f96daa7f27c">李四</option>
 						</select>
 
 						$("#create-owner").val("40f6cdea0bd34aceb77492a1656d9fb3");
-
-
 					 */
 
 					//取得当前登录用户的id

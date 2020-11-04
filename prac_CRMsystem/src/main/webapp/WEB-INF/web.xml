@@ -33,4 +33,12 @@
     <servlet-name>UserController</servlet-name>
     <url-pattern>/users/login.do</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>ActivityController</servlet-name>
+    <servlet-class>com.neau.crm.web.controller.ActivityController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ActivityController</servlet-name>
+    <url-pattern>/functions/activities/select.do</url-pattern>
+  </servlet-mapping>
 </web-app>
