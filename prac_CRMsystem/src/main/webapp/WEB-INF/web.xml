@@ -32,6 +32,7 @@
   <servlet-mapping>
     <servlet-name>UserController</servlet-name>
     <url-pattern>/users/login.do</url-pattern>
+    <url-pattern>/functions/activity/getUserList.do</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>ActivityController</servlet-name>
@@ -39,6 +40,11 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>ActivityController</servlet-name>
-    <url-pattern>/functions/activities/select.do</url-pattern>
+    <url-pattern>/functions/activity/selectUserListAndActivity.do</url-pattern>
+    <url-pattern>/functions/activity/save.do</url-pattern>
+    <url-pattern>/functions/activity/delete.do</url-pattern>
+    <url-pattern>/functions/activity/selectUserListAndActivity.do</url-pattern>
+    <url-pattern>/functions/activity/update.do</url-pattern>
+    <url-pattern>/functions/activity/pageList.do</url-pattern>
   </servlet-mapping>
 </web-app>

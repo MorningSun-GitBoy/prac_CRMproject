@@ -49,7 +49,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 			//走后台，目的是为了取得用户信息列表，为所有者下拉框铺值
 			$.ajax({
 
-				url : "workbench/activity/getUserList.do",
+				url : "functions/activity/getUserList.do",
 				type : "get",
 				dataType : "json",
 				success : function (data) {
@@ -104,7 +104,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 			$.ajax({
 
-				url : "workbench/activity/save.do",
+				url : "functions/activity/save.do",
 				data : {
 
 					"owner" : $.trim($("#create-owner").val()),
@@ -288,7 +288,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 					//alert(param);
 					$.ajax({
 
-						url : "workbench/activity/delete.do",
+						url : "functions/activity/delete.do",
 						data : param,
 						type : "post",
 						dataType : "json",
@@ -350,7 +350,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 				$.ajax({
 
-					url : "workbench/activity/getUserListAndActivity.do",
+					url : "functions/activity/selectUserListAndActivity.do",
 					data : {
 
 						"id" : id
@@ -413,7 +413,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 			$.ajax({
 
-				url : "workbench/activity/update.do",
+				url : "functions/activity/update.do",
 				data : {
 
 					"id" : $.trim($("#edit-id").val()),
@@ -506,7 +506,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 		$.ajax({
 
-			url : "workbench/activity/pageList.do",
+			url : "functions/activity/pageList.do",
 			data : {
 
 				"pageNo" : pageNo,
@@ -745,7 +745,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	<div>
 		<div style="position: relative; left: 10px; top: -10px;">
 			<div class="page-header">
-				<h3>市场活动列表123</h3>
+				<h3>市场活动列表</h3>
 			</div>
 		</div>
 	</div>

@@ -13,17 +13,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class UserController extends HttpServlet {
+    private UserService us;
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse rep){
         System.out.println("用户进入控制器");//测试用
         String path = req.getServletPath();
         if("/users/login.do".equals(path)){
             login(req,rep);
-        }else if("".equals(path)){
-
+        }else if("/functions/activity/getUserList.do".equals(path)){
+            selectAllUser(req,rep);
         }
     }
     private void login(HttpServletRequest req,HttpServletResponse rep){
@@ -34,7 +36,7 @@ public class UserController extends HttpServlet {
         //接收IP地址
         String ip = req.getRemoteAddr();
         //创建service对象
-        UserService us = new UserServiceImpl();//需改为代理类
+        us = new UserServiceImpl();//需改为代理类
         //提取User对象，并放入Session域
         try {
             SysUser user = us.login(loginAct, loginPwd, ip);
@@ -51,6 +53,15 @@ public class UserController extends HttpServlet {
             PrintJson.printJsonObj(rep,map);
         }catch (IOException ie){
             ie.printStackTrace();
+        }
+    }
+    private void selectAllUser(HttpServletRequest req,HttpServletResponse rep){
+        String UUID = ((SysUser)req.getSession().getAttribute("user")).getId();//以后涉及权限的时候有用
+        try{
+
+        }catch (NullPointerException e1){
+            us = new UserServiceImpl();
+            selectAllUser(req,rep);
         }
     }
 }
