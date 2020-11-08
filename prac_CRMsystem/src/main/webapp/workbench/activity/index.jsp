@@ -153,11 +153,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 
 						//清空添加操作模态窗口中的数据
-						//提交表单
-						//$("#activityAddForm").submit();
 
 						/*
-
 							注意：
 								我们拿到了form表单的jquery对象
 								对于表单的jquery对象，提供了submit()方法让我们提交表单
@@ -171,25 +168,14 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 								dom对象转换为jquery对象：
 									$(dom)
-
-
 						 */
 						$("#activityAddForm")[0].reset();
 
 						//关闭添加操作的模态窗口
 						$("#createActivityModal").modal("hide");
-
-
-
 					}else{
-
 						alert("添加市场活动失败");
-
 					}
-
-
-
-
 				}
 
 			})
