@@ -11,9 +11,9 @@ public class SysUser {
     private String deptno;      //部门编号
     private String allowIps;   //允许访问IP地址
     private String createTime;  //创建时间
-    private String createBy;    //创建人
+    private String createBy;    //创建人 System代表系统默认创建 其他用户创建，则是显示为对应的UID
     private String editTime;    //修改时间
-    private String editBy;      //修改人
+    private String editBy;      //修改人 System代表系统更新时修改 其他用户修改，则是显示为对应的UID
 
     public String getId() {
         return id;

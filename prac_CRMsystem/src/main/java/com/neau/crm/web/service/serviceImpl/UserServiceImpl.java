@@ -8,6 +8,7 @@ import com.neau.crm.web.domain.SysUser;
 import com.neau.crm.web.service.UserService;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class UserServiceImpl implements UserService {
@@ -32,5 +33,10 @@ public class UserServiceImpl implements UserService {
             throw new LoginException("IP非法，请在合理的位置登录系统");
         }
         return user;
+    }
+
+    @Override
+    public List<SysUser> selectAllUser() {
+        return userDao.selectAllUser();
     }
 }

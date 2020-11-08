@@ -22,13 +22,19 @@ public class UserController extends HttpServlet {
     protected void service(HttpServletRequest req, HttpServletResponse rep){
         System.out.println("用户进入控制器");//测试用
         String path = req.getServletPath();
-        if("/users/login.do".equals(path)){
-            login(req,rep);
-        }else if("/functions/activity/getUserList.do".equals(path)){
-            selectAllUser(req,rep);
+        switch (path){
+            case "/users/login.do":
+                login(req,rep);
+                break;
+            case "/users/getUserList.do":
+                selectAllUser(req,rep);
+                break;
+            default:
+                System.out.println("未定义的URL："+path);
         }
     }
     private void login(HttpServletRequest req,HttpServletResponse rep){
+        System.out.println("查找登录用户");
         String loginAct = req.getParameter("loginAct");
         String loginPwd = req.getParameter("loginPwd");
         //明文转换成密文
@@ -56,9 +62,11 @@ public class UserController extends HttpServlet {
         }
     }
     private void selectAllUser(HttpServletRequest req,HttpServletResponse rep){
+        System.out.println("查找所有用户");
         String UUID = ((SysUser)req.getSession().getAttribute("user")).getId();//以后涉及权限的时候有用
         try{
-
+            List<SysUser> users = us.selectAllUser();
+            PrintJson.printJsonObj(rep,users);
         }catch (NullPointerException e1){
             us = new UserServiceImpl();
             selectAllUser(req,rep);

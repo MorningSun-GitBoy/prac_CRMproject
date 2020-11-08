@@ -6,4 +6,7 @@
     <select id="login" resultType="com.neau.crm.web.domain.SysUser">
         select * from tb_crm_user where loginAct=#{loginAct} and loginPwd=#{loginPwd}
     </select>
+    <select id="selectAllUser" resultType="com.neau.crm.web.domain.SysUser">
+        select * from tb_crm_user
+    </select>
 </mapper>

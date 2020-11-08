@@ -8,13 +8,13 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	<base href="<%=basePath%>">
 <meta charset="UTF-8">
 
-<link href="jquery/bootstrap_3.3.0/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
-<link href="jquery/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css" type="text/css" rel="stylesheet" />
+    <link href="jquery/bootstrap_3.3.0/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+    <link href="jquery/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css" type="text/css" rel="stylesheet" />
 
-<script type="text/javascript" src="jquery/jquery-1.11.1-min.js"></script>
-<script type="text/javascript" src="jquery/bootstrap_3.3.0/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="jquery/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.js"></script>
-<script type="text/javascript" src="jquery/bootstrap-datetimepicker-master/locale/bootstrap-datetimepicker.zh-CN.js"></script>
+    <script type="text/javascript" src="jquery/jquery-1.11.1-min.js"></script>
+    <script type="text/javascript" src="jquery/bootstrap_3.3.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="jquery/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.js"></script>
+    <script type="text/javascript" src="jquery/bootstrap-datetimepicker-master/locale/bootstrap-datetimepicker.zh-CN.js"></script>
 
 	<link rel="stylesheet" type="text/css" href="jquery/bs_pagination/jquery.bs_pagination.min.css">
 	<script type="text/javascript" src="jquery/bs_pagination/jquery.bs_pagination.min.js"></script>
@@ -64,7 +64,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 					var html = "<option></option>";
 
 					//遍历出来的每一个n，就是每一个user对象
-					$.each(data,function (i,n) {
+					$.each(data,function (i,n) {//用于遍历数据
 
 						html += "<option value='"+n.id+"'>"+n.name+"</option>";
 
@@ -626,11 +626,11 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 						<div class="form-group">
 							<label for="edit-startTime" class="col-sm-2 control-label">开始日期</label>
 							<div class="col-sm-10" style="width: 300px;">
-								<input type="text" class="form-control time" id="edit-startDate">
+								<input type="text" class="form-control time" id="edit-startDate" readonly>
 							</div>
 							<label for="edit-endTime" class="col-sm-2 control-label">结束日期</label>
 							<div class="col-sm-10" style="width: 300px;">
-								<input type="text" class="form-control time" id="edit-endDate">
+								<input type="text" class="form-control time" id="edit-endDate" readonly>
 							</div>
 						</div>
 
@@ -699,11 +699,11 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 						<div class="form-group">
 							<label for="create-startTime" class="col-sm-2 control-label">开始日期</label>
 							<div class="col-sm-10" style="width: 300px;">
-								<input type="text" class="form-control time" id="create-startDate">
+								<input type="text" class="form-control time" id="create-startDate" readonly>
 							</div>
 							<label for="create-endTime" class="col-sm-2 control-label">结束日期</label>
 							<div class="col-sm-10" style="width: 300px;">
-								<input type="text" class="form-control time" id="create-endDate">
+								<input type="text" class="form-control time" id="create-endDate" readonly>
 							</div>
 						</div>
                         <div class="form-group">
