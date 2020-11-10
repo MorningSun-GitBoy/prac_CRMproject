@@ -26,4 +26,30 @@
             #{createBy}
         )
     </insert>
+    <select id="pageList" resultType="com.neau.crm.web.domain.Activity">
+        select
+            a.id,
+            a.acname,
+            u.uname as owner,
+            a.startDate,
+            a.endDate,
+        from tb_crm_activity a
+        join tb_crm_user u
+        on a.owner = u.id
+        <where>
+            <if test="actName!=null and actName!=''">
+                a.acname like '%' #{actName} '%'
+            </if>
+            <if test="owner!=null and owner!=''">
+                and u.uname like '%' #{owner} '%'
+            </if>
+            <if test="startDate!=null and startDate!=''">
+                and a.startDate &gt; #{startDate}
+            </if>
+            <if test="endDate!=null and endDate!=''">
+                and a.endDate &lt; #{endDate}
+            </if>
+        </where>
+        order by a.createTime desc 
+    </select>
 </mapper>

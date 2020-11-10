@@ -5,6 +5,7 @@ import com.neau.crm.utils.PrintJson;
 import com.neau.crm.utils.UUIDUtils;
 import com.neau.crm.web.domain.Activity;
 import com.neau.crm.web.domain.SysUser;
+import com.neau.crm.web.domain.vo.PageInfo;
 import com.neau.crm.web.service.ActivityService;
 import com.neau.crm.web.service.serviceImpl.ActivityServiceImpl;
 
@@ -13,6 +14,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class ActivityController extends HttpServlet {
     ActivityService as = new ActivityServiceImpl();
@@ -59,6 +63,28 @@ public class ActivityController extends HttpServlet {
         PrintJson.printJsonFlag(response,flag);
     }
     private void searchActivity(HttpServletRequest req,HttpServletResponse rep){
-
+        System.out.println("查询市场活动信息列表");
+        String name = req.getParameter("name");
+        String owner = req.getParameter("owner");
+        String startDate = req.getParameter("startDate");
+        String endDate =  req.getParameter("endDate");
+        String pageNo = req.getParameter("pageNo");
+        String pageSize = req.getParameter("pageSize");//每页展现记录数
+        /*
+         *   sql:SELECT * FROM table_name LIMIT 略过记录数,每页记录数
+         *   每页记录数：pageSize
+         *   略过记录数：pageSize*pageNo
+         */
+        StringBuilder sb = new StringBuilder();
+        String skipNum =sb.append(Integer.valueOf(pageNo)*Integer.valueOf(pageSize)).toString();
+        Map<String,String> parameter = new HashMap<String,String>();
+        parameter.put("actName",name);
+        parameter.put("owner",owner);
+        parameter.put("startDate",startDate);
+        parameter.put("endDate",endDate);
+        parameter.put("skipNum",skipNum);
+        parameter.put("pageSize",pageSize);
+        PageInfo<Activity> vo = as.pageList(parameter);
+        PrintJson.printJsonObj(rep,vo);
     }
 }
