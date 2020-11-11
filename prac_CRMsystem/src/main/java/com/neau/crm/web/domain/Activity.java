@@ -2,12 +2,12 @@ package com.neau.crm.web.domain;
 
 public class Activity {
     private String id;              //主键
-    private String owner;           //所有人 外键 关联SysUser.id
+    private String acowner;           //所有人 外键 关联SysUser.id
     private String acname;          //活动名称
     private String startDate;       //开始时间
     private String endDate;         //结束时间
     private String cost;            //成本
-    private String description;     //描述
+    private String descriptions;     //描述
     private String createTime;      //创建时间
     private String createBy;        //创建人
     private String editTime;        //修改时间
@@ -21,12 +21,12 @@ public class Activity {
         this.id = id;
     }
 
-    public String getOwner() {
-        return owner;
+    public String getAcowner() {
+        return acowner;
     }
 
-    public void setOwner(String owner) {
-        this.owner = owner;
+    public void setAcowner(String acowner) {
+        this.acowner = acowner;
     }
 
     public String getAcname() {
@@ -61,12 +61,12 @@ public class Activity {
         this.cost = cost;
     }
 
-    public String getDescription() {
-        return description;
+    public String getDescriptions() {
+        return descriptions;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDescriptions(String descriptions) {
+        this.descriptions = descriptions;
     }
 
     public String getCreateTime() {

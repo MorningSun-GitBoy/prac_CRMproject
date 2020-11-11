@@ -26,8 +26,10 @@ public class HasLoginFilter implements Filter {
             HttpSession session = request.getSession();
             SysUser user = (SysUser) session.getAttribute("user");
             if (user != null) {
+                System.out.println("登录验证通过");
                 filterChain.doFilter(req, rep);
             } else {
+                System.out.println("登录验证不通过");
                 response.sendRedirect(request.getContextPath() + "/index.html");
             }
         }

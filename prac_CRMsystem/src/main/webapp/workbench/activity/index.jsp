@@ -66,7 +66,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 					//遍历出来的每一个n，就是每一个user对象
 					$.each(data,function (i,n) {//用于遍历数据
 
-						html += "<option value='"+n.id+"'>"+n.name+"</option>";
+						html += "<option value='"+n.id+"'>"+n.uname+"</option>";
 
 					})
 

@@ -44,7 +44,6 @@
     <url-pattern>/functions/activity/selectUserListAndActivity.do</url-pattern>
     <url-pattern>/functions/activity/save.do</url-pattern>
     <url-pattern>/functions/activity/delete.do</url-pattern>
-    <url-pattern>/functions/activity/selectUserListAndActivity.do</url-pattern>
     <url-pattern>/functions/activity/update.do</url-pattern>
     <url-pattern>/functions/activity/pageList.do</url-pattern>
   </servlet-mapping>

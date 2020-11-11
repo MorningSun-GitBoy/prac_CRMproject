@@ -52,11 +52,11 @@ public class ActivityController extends HttpServlet {
         Activity ac = new Activity();
         ac.setId(id);
         ac.setAcname(name);
-        ac.setOwner(owner);
+        ac.setAcowner(owner);
         ac.setStartDate(startDate);
         ac.setEndDate(endDate);
         ac.setCost(cost);
-        ac.setDescription(description);
+        ac.setDescriptions(description);
         ac.setCreateTime(createTime);
         ac.setCreateBy(createBy);
         boolean flag = as.save(ac);

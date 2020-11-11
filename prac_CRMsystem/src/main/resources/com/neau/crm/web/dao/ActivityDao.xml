@@ -6,22 +6,22 @@
     <insert id="save" >
         insert into tb_crm_activity(
             id,
-            owner,
+            acowner,
             acname,
             startDate,
             endDate,
             cost,
-            description,
+            descriptions,
             createTime,
             createBy
         )values(
             #{id},
-            #{owner},
+            #{acowner},
             #{acname},
             #{startDate},
             #{endDate},
             #{cost},
-            #{description},
+            #{descriptions},
             #{createTime},
             #{createBy}
         )
@@ -30,12 +30,12 @@
         select
             a.id,
             a.acname,
-            u.uname as owner,
+            u.uname as acowner,
             a.startDate,
             a.endDate,
         from tb_crm_activity a
         join tb_crm_user u
-        on a.owner = u.id
+        on a.acowner = u.id
         <where>
             <if test="actName!=null and actName!=''">
                 a.acname like '%' #{actName} '%'
@@ -50,6 +50,6 @@
                 and a.endDate &lt; #{endDate}
             </if>
         </where>
-        order by a.createTime desc 
+        order by a.createTime desc
     </select>
 </mapper>
