@@ -15,11 +15,13 @@ public class ActivityServiceImpl implements ActivityService {
     @Override
     public boolean save(Activity activity) {
         int count = activityDao.save(activity);
+        //System.out.println(count);
+        //System.out.println(count==1);
         return count == 1;
     }
 
     @Override
-    public PageInfo<Activity> pageList(Map<String, String> parameters) {
+    public PageInfo<Activity> pageList(Map<String, Object> parameters) {
         //取得total
         int total = activityDao.getTotal(parameters);
         //取得activityList

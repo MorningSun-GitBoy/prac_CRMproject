@@ -26,7 +26,7 @@ public class ServerSessionUtils {
     public static SqlSession getSqlSession(){
         SqlSession session = t.get();
         if(session==null){
-            session = factory.openSession();
+            session = factory.openSession(true);
             t.set(session);
         }
         return session;

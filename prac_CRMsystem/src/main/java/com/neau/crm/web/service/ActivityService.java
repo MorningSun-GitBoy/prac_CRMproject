@@ -7,5 +7,5 @@ import java.util.Map;
 
 public interface ActivityService {
     public boolean save(Activity ac);
-    public PageInfo<Activity> pageList(Map<String,String> parameters);
+    public PageInfo<Activity> pageList(Map<String,Object> parameters);
 }

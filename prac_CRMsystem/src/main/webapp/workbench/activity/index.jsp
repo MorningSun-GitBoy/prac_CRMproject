@@ -118,7 +118,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				type : "post",
 				dataType : "json",
 				success : function (data) {
-
+                    console.log(data);
 					/*
 
 						data
@@ -523,12 +523,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				var html = "";
 
 				//每一个n就是每一个市场活动对象
-				$.each(data.dataList,function (i,n) {
+				$.each(data.entityList,function (i,n) {
 
 					html += '<tr class="active">';
 					html += '<td><input type="checkbox" name="xz" value="'+n.id+'"/></td>';
-					html += '<td><a style="text-decoration: none; cursor: pointer;" onclick="window.location.href=\'workbench/activity/detail.do?id='+n.id+'\';">'+n.name+'</a></td>';
-					html += '<td>'+n.owner+'</td>';
+					html += '<td><a style="text-decoration: none; cursor: pointer;" onclick="window.location.href=\'workbench/activity/detail.do?id='+n.id+'\';">'+n.acname+'</a></td>';
+					html += '<td>'+n.acowner+'</td>';
 					html += '<td>'+n.startDate+'</td>';
 					html += '<td>'+n.endDate+'</td>';
 					html += '</tr>';

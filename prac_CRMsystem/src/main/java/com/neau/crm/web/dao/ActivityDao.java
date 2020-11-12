@@ -8,6 +8,6 @@ import java.util.Map;
 
 public interface ActivityDao {
     public int save(Activity activity);
-    public int getTotal(Map<String,String> conditions);
-    public List<Activity> pageList(Map<String,String> conditions);
+    public int getTotal(Map<String,Object> conditions);
+    public List<Activity> pageList(Map<String,Object> conditions);
 }

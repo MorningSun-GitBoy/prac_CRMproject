@@ -60,6 +60,7 @@ public class ActivityController extends HttpServlet {
         ac.setCreateTime(createTime);
         ac.setCreateBy(createBy);
         boolean flag = as.save(ac);
+        //System.out.println(flag);
         PrintJson.printJsonFlag(response,flag);
     }
     private void searchActivity(HttpServletRequest req,HttpServletResponse rep){
@@ -76,14 +77,14 @@ public class ActivityController extends HttpServlet {
          *   略过记录数：pageSize*pageNo
          */
         StringBuilder sb = new StringBuilder();
-        String skipNum =sb.append(Integer.valueOf(pageNo)*Integer.valueOf(pageSize)).toString();
-        Map<String,String> parameter = new HashMap<String,String>();
+        Integer skipNum =(Integer.valueOf(pageNo)-1)*Integer.valueOf(pageSize);
+        Map<String,Object> parameter = new HashMap<String,Object>();
         parameter.put("actName",name);
         parameter.put("owner",owner);
         parameter.put("startDate",startDate);
         parameter.put("endDate",endDate);
         parameter.put("skipNum",skipNum);
-        parameter.put("pageSize",pageSize);
+        parameter.put("pageSize",Integer.valueOf(pageSize));
         PageInfo<Activity> vo = as.pageList(parameter);
         PrintJson.printJsonObj(rep,vo);
     }
