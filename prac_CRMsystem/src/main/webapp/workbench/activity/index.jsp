@@ -191,10 +191,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 		$("#searchBtn").click(function () {
 
 			/*
-
 				点击查询按钮的时候，我们应该将搜索框中的信息保存起来,保存到隐藏域中
-
-
 			 */
 
 			$("#hidden-name").val($.trim($("#search-name").val()));
@@ -572,6 +569,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 </head>
 <body>
 
+    <!-- 用于更正搜索逻辑而准备的隐藏域 -->
 	<input type="hidden" id="hidden-name"/>
 	<input type="hidden" id="hidden-owner"/>
 	<input type="hidden" id="hidden-startDate"/>
