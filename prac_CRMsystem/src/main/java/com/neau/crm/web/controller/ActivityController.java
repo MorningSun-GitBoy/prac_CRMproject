@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class ActivityController extends HttpServlet {
@@ -33,6 +32,9 @@ public class ActivityController extends HttpServlet {
                 break;
             case "/functions/activity/pageList.do":
                 searchActivity(request,response);
+                break;
+            case "/functions/activity/delete.do":
+                deleteByIds(request,response);
                 break;
             default:
                 System.out.println("出现一个奇怪的问题");
@@ -87,5 +89,11 @@ public class ActivityController extends HttpServlet {
         parameter.put("pageSize",Integer.valueOf(pageSize));
         PageInfo<Activity> vo = as.pageList(parameter);
         PrintJson.printJsonObj(rep,vo);
+    }
+    private void deleteByIds(HttpServletRequest request,HttpServletResponse response){
+        System.out.println("进行删除市场活动操作");
+        String ids[] = request.getParameterValues("id");
+        boolean flag = as.deleteByIds(ids);
+        PrintJson.printJsonFlag(response,flag);
     }
 }

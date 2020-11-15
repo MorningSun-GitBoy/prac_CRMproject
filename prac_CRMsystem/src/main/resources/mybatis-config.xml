@@ -17,7 +17,10 @@
     </environments>
     <mappers>
         <mapper resource="com/neau/crm/web/dao/UserDao.xml"/>
+        <mapper resource="com/neau/crm/web/dao/UserDelDao.xml"/>
         <mapper resource="com/neau/crm/web/dao/ActivityDao.xml"/>
+        <mapper resource="com/neau/crm/web/dao/ActivityDelDao.xml"/>
         <mapper resource="com/neau/crm/web/dao/ActivityRemarkDao.xml"/>
+        <mapper resource="com/neau/crm/web/dao/ActivityRemarkDelDao.xml"/>
     </mappers>
 </configuration>
