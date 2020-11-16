@@ -8,5 +8,5 @@ import java.util.Map;
 public interface ActivityService {
     public boolean save(Activity ac);
     public PageInfo<Activity> pageList(Map<String,Object> parameters);
-    public boolean deleteByIds(String[] ids);
+    public boolean deleteByIds(String[] ids,String optUsrId);
 }

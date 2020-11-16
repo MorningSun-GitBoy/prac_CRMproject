@@ -74,4 +74,16 @@
             </if>
         </where>
     </select>
+    <select id="selectByIds" resultType="com.neau.crm.web.domain.Activity">
+        select * from tb_crm_activity where id in
+        <foreach collection="array" item="aid" open="(" separator="," close=")">
+            #{aid}
+        </foreach>
+    </select>
+    <delete id="deleteByIds">
+        delete from tb_crm_activity where id in
+        <foreach collection="array" item="aid" open="(" separator="," close=")">
+            #{aid}
+        </foreach>
+    </delete>
 </mapper>

@@ -10,4 +10,6 @@ public interface ActivityDao {
     public int save(Activity activity);
     public int getTotal(Map<String,Object> conditions);
     public List<Activity> pageList(Map<String,Object> conditions);
+    public List<Activity> selectByIds(String[] ids);
+    public int deleteByIds(String[] isd);
 }

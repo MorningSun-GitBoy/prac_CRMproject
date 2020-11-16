@@ -93,7 +93,7 @@ public class ActivityController extends HttpServlet {
     private void deleteByIds(HttpServletRequest request,HttpServletResponse response){
         System.out.println("进行删除市场活动操作");
         String ids[] = request.getParameterValues("id");
-        boolean flag = as.deleteByIds(ids);
+        boolean flag = as.deleteByIds(ids,((SysUser)request.getSession().getAttribute("user")).getId());
         PrintJson.printJsonFlag(response,flag);
     }
 }

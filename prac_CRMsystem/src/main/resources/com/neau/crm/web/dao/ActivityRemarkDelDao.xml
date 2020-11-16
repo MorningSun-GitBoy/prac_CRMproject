@@ -3,27 +3,34 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.neau.crm.web.dao.ActivityRemarkDelDao">
-    <insert id="save" flushCache="true">
-        insert into tb_crm_activity(
+    <insert id="insertItems" flushCache="true">
+        insert into tb_crm_activity_remark_del(
             id,
-            acowner,
-            acname,
-            startDate,
-            endDate,
-            cost,
-            descriptions,
+            acRemId,
+            noteContent,
             createTime,
-            createBy
-        )values(
-            #{id},
-            #{acowner},
-            #{acname},
-            #{startDate},
-            #{endDate},
-            #{cost},
-            #{descriptions},
-            #{createTime},
-            #{createBy}
-        )
+            createBy,
+            editTime,
+            editBy,
+            editFlage,
+            activityId,
+            deletTime,
+            deletBy
+        )values
+        <foreach collection="list" separator="," item="delEntity" open="" close="">
+            (
+                #{delEntity.id},
+                #{delEntity.entity.id},
+                #{delEntity.entity.noteContent},
+                #{delEntity.entity.createTime},
+                #{delEntity.entity.createBy},
+                #{delEntity.entity.editTime},
+                #{delEntity.entity.editBy},
+                #{delEntity.entity.editFlage},
+                #{delEntity.entity.activityId},
+                #{delEntity.deletTime},
+                #{delEntity.deletBy}
+            )
+        </foreach>
     </insert>
 </mapper>
