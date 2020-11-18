@@ -36,6 +36,9 @@ public class ActivityController extends HttpServlet {
             case "/functions/activity/delete.do":
                 deleteByIds(request,response);
                 break;
+            case "/functions/activity/detail.do":
+                showDetail(request,response);
+                break;
             default:
                 System.out.println("出现一个奇怪的问题");
         }
@@ -95,5 +98,12 @@ public class ActivityController extends HttpServlet {
         String ids[] = request.getParameterValues("id");
         boolean flag = as.deleteByIds(ids,((SysUser)request.getSession().getAttribute("user")).getId());
         PrintJson.printJsonFlag(response,flag);
+    }
+    private void showDetail(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("进入展示市场活动详情页面");
+        String id = request.getParameter("id");
+        Activity a = as.getDetailById(id);
+        request.getSession().setAttribute("a",a);
+        request.getRequestDispatcher("/workbench/activity/detail.jsp").forward(request,response);
     }
 }

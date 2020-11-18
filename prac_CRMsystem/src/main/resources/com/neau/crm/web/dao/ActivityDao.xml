@@ -74,6 +74,24 @@
             </if>
         </where>
     </select>
+    <select id="selectDetailById" resultType="com.neau.crm.web.domain.Activity">
+        select
+            a.id as id,
+            a.acname as acname,
+            u.uname as acowner,
+            a.startDate as startDate,
+            a.endDate as endDate,
+            a.cost as cost,
+            a.descriptions as descriptions,
+            a.createTime as createTime,
+            a.createBy as createBy,
+            a.editTime as editTime,
+            a.editBy as editBy
+        from tb_crm_activity a
+        join tb_crm_user u
+        on a.acowner = u.id
+        where a.id = #{id}
+    </select>
     <select id="selectByIds" resultType="com.neau.crm.web.domain.Activity">
         select * from tb_crm_activity where id in
         <foreach collection="array" item="aid" open="(" separator="," close=")">

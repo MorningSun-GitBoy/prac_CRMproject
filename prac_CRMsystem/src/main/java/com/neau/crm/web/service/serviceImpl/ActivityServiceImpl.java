@@ -80,4 +80,9 @@ public class ActivityServiceImpl implements ActivityService {
          */
         return (remNum==insRemNum || insRemNum==delRemNum)||(insActNum==ids.length || insActNum==delActNum);
     }
+
+    @Override
+    public Activity getDetailById(String id) {
+        return activityDao.selectDetailById(id);
+    }
 }

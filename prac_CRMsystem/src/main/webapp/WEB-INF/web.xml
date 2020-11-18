@@ -46,5 +46,10 @@
     <url-pattern>/functions/activity/delete.do</url-pattern>
     <url-pattern>/functions/activity/update.do</url-pattern>
     <url-pattern>/functions/activity/pageList.do</url-pattern>
+    <url-pattern>/functions/activity/detail.do</url-pattern>
+    <url-pattern>/functions/activity/saveRemark.do</url-pattern>
+    <url-pattern>/functions/activity/updateRemark.do</url-pattern>
+    <url-pattern>/functions/activity/getRemarkListByAid.do</url-pattern>
+    <url-pattern>/functions/activity/deleteRemark.do</url-pattern>
   </servlet-mapping>
 </web-app>

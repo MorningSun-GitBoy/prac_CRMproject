@@ -68,7 +68,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 			$.ajax({
 
-				url : "workbench/activity/saveRemark.do",
+				url : "functions/activity/saveRemark.do",
 				data : {
 
 					"noteContent" : $.trim($("#remark").val()),
@@ -132,7 +132,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 			$.ajax({
 
-				url : "workbench/activity/updateRemark.do",
+				url : "functions/activity/updateRemark.do",
 				data : {
 
 					"id" : id,
@@ -179,7 +179,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 		$.ajax({
 
-			url : "workbench/activity/getRemarkListByAid.do",
+			url : "functions/activity/getRemarkListByAid.do",
 			data : {
 
 				"activityId" : "${a.id}"
@@ -234,7 +234,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 		$.ajax({
 
-			url : "workbench/activity/deleteRemark.do",
+			url : "functions/activity/deleteRemark.do",
 			data : {
 
 				"id" : id
@@ -346,9 +346,9 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	<div style="position: relative; top: -70px;">
 		<div style="position: relative; left: 40px; height: 30px;">
 			<div style="width: 300px; color: gray;">所有者</div>
-			<div style="width: 300px;position: relative; left: 200px; top: -20px;"><b>${a.owner}</b></div>
+			<div style="width: 300px;position: relative; left: 200px; top: -20px;"><b>${a.acowner}</b></div>
 			<div style="width: 300px;position: relative; left: 450px; top: -40px; color: gray;">名称</div>
-			<div style="width: 300px;position: relative; left: 650px; top: -60px;"><b>${a.name}</b></div>
+			<div style="width: 300px;position: relative; left: 650px; top: -60px;"><b>${a.acname}</b></div>
 			<div style="height: 1px; width: 400px; background: #D5D5D5; position: relative; top: -60px;"></div>
 			<div style="height: 1px; width: 400px; background: #D5D5D5; position: relative; top: -60px; left: 450px;"></div>
 		</div>
@@ -380,7 +380,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 			<div style="width: 300px; color: gray;">描述</div>
 			<div style="width: 630px;position: relative; left: 200px; top: -20px;">
 				<b>
-					${a.description}
+					${a.descriptions}
 				</b>
 			</div>
 			<div style="height: 1px; width: 850px; background: #D5D5D5; position: relative; top: -20px;"></div>

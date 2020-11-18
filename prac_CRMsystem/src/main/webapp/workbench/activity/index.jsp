@@ -129,7 +129,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 						//添加成功后
 						//刷新市场活动信息列表（局部刷新）
-						//pageList(1,2);
+						//pageList(1,5);
 
 						/*
 						*
@@ -185,7 +185,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 		//页面加载完毕后触发一个方法
 		//默认展开列表的第一页，每页展现两条记录
-		pageList(1,2);
+		pageList(1,5);
 
 		//为查询按钮绑定事件，触发pageList方法
 		$("#searchBtn").click(function () {
@@ -199,7 +199,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 			$("#hidden-startDate").val($.trim($("#search-startDate").val()));
 			$("#hidden-endDate").val($.trim($("#search-endDate").val()));
 
-			pageList(1,2);
+			pageList(1,5);
 
 		})
 
@@ -524,7 +524,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 					html += '<tr class="active">';
 					html += '<td><input type="checkbox" name="xz" value="'+n.id+'"/></td>';
-					html += '<td><a style="text-decoration: none; cursor: pointer;" onclick="window.location.href=\'workbench/activity/detail.do?id='+n.id+'\';">'+n.acname+'</a></td>';
+					html += '<td><a style="text-decoration: none; cursor: pointer;" onclick="window.location.href=\'functions/activity/detail.do?id='+n.id+'\';">'+n.acname+'</a></td>';
 					html += '<td>'+n.acowner+'</td>';
 					html += '<td>'+n.startDate+'</td>';
 					html += '<td>'+n.endDate+'</td>';
