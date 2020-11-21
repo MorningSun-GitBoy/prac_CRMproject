@@ -8,6 +8,9 @@ import com.neau.crm.web.domain.SysUser;
 import com.neau.crm.web.domain.vo.PageInfo;
 import com.neau.crm.web.service.ActivityService;
 import com.neau.crm.web.service.serviceImpl.ActivityServiceImpl;
+import com.neau.crm.web.service.serviceImpl.UserServiceImpl;
+import org.springframework.context.ApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -18,7 +21,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ActivityController extends HttpServlet {
-    ActivityService as = new ActivityServiceImpl();
+    ActivityService as;
+
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        ApplicationContext context = WebApplicationContextUtils.getRequiredWebApplicationContext(getServletContext());
+        as = context.getBean("activityService", ActivityServiceImpl.class);
+    }
+
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         System.out.println("进入到市场活动控制器");

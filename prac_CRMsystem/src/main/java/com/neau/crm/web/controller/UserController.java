@@ -52,8 +52,8 @@ public class UserController extends HttpServlet {
         loginPwd = MD5Utils.getMD5Str(loginPwd);
         //接收IP地址
         String ip = req.getRemoteAddr();
-        //创建service对象
-        us = new UserServiceImpl();//需改为代理类
+        //创建service对象 spring创建代理
+        //us = new UserServiceImpl();//需改为代理类
         //提取User对象，并放入Session域
         try {
             SysUser user = us.login(loginAct, loginPwd, ip);
@@ -75,12 +75,7 @@ public class UserController extends HttpServlet {
     private void selectAllUser(HttpServletRequest req,HttpServletResponse rep){
         System.out.println("查找所有用户");
         String UUID = ((SysUser)req.getSession().getAttribute("user")).getId();//以后涉及权限的时候有用
-        try{
-            List<SysUser> users = us.selectAllUser();
-            PrintJson.printJsonObj(rep,users);
-        }catch (NullPointerException e1){
-            us = new UserServiceImpl();
-            selectAllUser(req,rep);
-        }
+        List<SysUser> users = us.selectAllUser();
+        PrintJson.printJsonObj(rep,users);
     }
 }
