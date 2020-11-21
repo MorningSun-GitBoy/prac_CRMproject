@@ -7,7 +7,10 @@ import com.neau.crm.utils.PrintJson;
 import com.neau.crm.web.domain.SysUser;
 import com.neau.crm.web.service.UserService;
 import com.neau.crm.web.service.serviceImpl.UserServiceImpl;
+import org.springframework.context.ApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,6 +21,14 @@ import java.util.Map;
 
 public class UserController extends HttpServlet {
     private UserService us;
+
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        ApplicationContext context = WebApplicationContextUtils.getRequiredWebApplicationContext(getServletContext());
+        us = context.getBean("userService",UserServiceImpl.class);
+    }
+
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse rep){
         System.out.println("用户进入控制器");//测试用

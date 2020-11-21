@@ -4,6 +4,7 @@ import com.neau.crm.exceptions.LoginException;
 import com.neau.crm.utils.DateTimeUtils;
 import com.neau.crm.utils.ServerSessionUtils;
 import com.neau.crm.web.dao.UserDao;
+import com.neau.crm.web.dao.UserDelDao;
 import com.neau.crm.web.domain.SysUser;
 import com.neau.crm.web.service.UserService;
 
@@ -13,6 +14,7 @@ import java.util.Map;
 
 public class UserServiceImpl implements UserService {
     private UserDao userDao = ServerSessionUtils.getSqlSession().getMapper(UserDao.class);
+    private UserDelDao userDelDao = ServerSessionUtils.getSqlSession().getMapper(UserDelDao.class);
     @Override
     public SysUser login (String loginAct, String loginPwd, String ip) throws LoginException {
         /*System.out.println(loginAct);
@@ -38,5 +40,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<SysUser> selectAllUser() {
         return userDao.selectAllUser();
+    }
+
+    public void setUserDao(UserDao userDao) {
+        this.userDao = userDao;
+    }
+
+    public void setUserDelDao(UserDelDao userDelDao) {
+        this.userDelDao = userDelDao;
     }
 }

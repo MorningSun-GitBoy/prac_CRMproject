@@ -85,4 +85,20 @@ public class ActivityServiceImpl implements ActivityService {
     public Activity getDetailById(String id) {
         return activityDao.selectDetailById(id);
     }
+
+    public void setActivityDao(ActivityDao activityDao) {
+        this.activityDao = activityDao;
+    }
+
+    public void setActivityDelDao(ActivityDelDao activityDelDao) {
+        this.activityDelDao = activityDelDao;
+    }
+
+    public void setActivityRemarkDao(ActivityRemarkDao activityRemarkDao) {
+        this.activityRemarkDao = activityRemarkDao;
+    }
+
+    public void setActivityRemarkDelDao(ActivityRemarkDelDao activityRemarkDelDao) {
+        this.activityRemarkDelDao = activityRemarkDelDao;
+    }
 }
