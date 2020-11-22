@@ -86,6 +86,11 @@ public class ActivityServiceImpl implements ActivityService {
         return activityDao.selectDetailById(id);
     }
 
+    @Override
+    public List<ActivityRemark> getRemarkListByAid(String id) {
+        return activityRemarkDao.selectByAid(id);
+    }
+
     public void setActivityDao(ActivityDao activityDao) {
         this.activityDao = activityDao;
     }

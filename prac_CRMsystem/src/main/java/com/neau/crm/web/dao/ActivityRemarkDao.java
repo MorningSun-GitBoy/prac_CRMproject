@@ -9,4 +9,5 @@ public interface ActivityRemarkDao {
     public String[] selectId(String[] ids);
     public List<ActivityRemark> selectByIds(String[] ids);
     public int deleteByIds(String[] ids);
+    public List<ActivityRemark> selectByAid(String id);
 }

@@ -10,6 +10,10 @@
             #{aid}
         </foreach>
     </select>
+    <select id="selectByAid" resultType="com.neau.crm.web.domain.ActivityRemark">
+        select * from tb_crm_activity_remark
+        where activityId = #{id}
+    </select>
     <select id="selectByIds" resultType="com.neau.crm.web.domain.ActivityRemark">
         select * from tb_crm_activity_remark
         where id in

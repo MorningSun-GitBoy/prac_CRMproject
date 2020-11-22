@@ -4,6 +4,7 @@ import com.neau.crm.utils.DateTimeUtils;
 import com.neau.crm.utils.PrintJson;
 import com.neau.crm.utils.UUIDUtils;
 import com.neau.crm.web.domain.Activity;
+import com.neau.crm.web.domain.ActivityRemark;
 import com.neau.crm.web.domain.SysUser;
 import com.neau.crm.web.domain.vo.PageInfo;
 import com.neau.crm.web.service.ActivityService;
@@ -18,6 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ActivityController extends HttpServlet {
@@ -49,6 +51,9 @@ public class ActivityController extends HttpServlet {
                 break;
             case "/functions/activity/detail.do":
                 showDetail(request,response);
+                break;
+            case "/functions/activity/getRemarkListByAid.do":
+                getRemarkListByAid(request,response);
                 break;
             default:
                 System.out.println("出现一个奇怪的问题");
@@ -116,5 +121,11 @@ public class ActivityController extends HttpServlet {
         Activity a = as.getDetailById(id);
         request.getSession().setAttribute("a",a);
         request.getRequestDispatcher("/workbench/activity/detail.jsp").forward(request,response);
+    }
+    private void getRemarkListByAid(HttpServletRequest request,HttpServletResponse response){
+        System.out.println("进入市场活动备注查找方法");
+        String id = request.getParameter("activityId");
+        List<ActivityRemark> arList = as.getRemarkListByAid(id);
+        PrintJson.printJsonObj(response,arList);
     }
 }

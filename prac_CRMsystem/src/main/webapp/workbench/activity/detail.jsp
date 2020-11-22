@@ -117,6 +117,39 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 	});
 
+	function showRemarkList(){
+	    $.ajax({
+	        url : "/functions/activity/getRemarkListByAid.do",
+	        data : {
+	            "activityId" : "${a.id}"
+	        },
+	        type : "get",
+	        dataType : "json",
+	        success : function(data){
+                /**
+                *   data
+                *       [{备注1},{备注2},……]
+                */
+                var html ="";
+                $.each(data,function(i,n){
+                    html += '<div class="remarkDiv" id="'+n.id+'" style="height:60px">';
+                    html += '<img title="'+n.createBy+'" src="image/user-thumbnail'+n.createBy+'.png" style="width: 30px; height:30px;">';
+                    html += '<div style="position: relative; top: -40px; left: 40px;" >';
+                    html += '<h5>'+n.noteContent+'</h5>';
+                    html += '<font color="gray">市场活动</font> <font color="gray">-</font> <b>${a.acname}</b> <small style="color: gray;"> '+(n.editFlag==0?n.createTime:n.editTime)+'  由'+(n.editFlag==0?n.createBy:n.editBy)+'</small>';
+                    html += '<div style="position: relative; left: 500px; top: -30px; height: 30px; width: 100px; display: none;">';
+                    html += '<a class="myHref" href="javascript:void(0);"><span class="glyphicon glyphicon-edit" style="font-size: 20px; color: #E6E6E6;"></span></a>';
+                    html += '&nbsp;&nbsp;&nbsp;&nbsp;';
+                    html += '<a class="myHref" href="javascript:void(0);"><span class="glyphicon glyphicon-remove" style="font-size: 20px; color: #E6E6E6;"></span></a>';
+                    html += '</div>';
+                    html += '</div>';
+                    html += '</div>';
+                })
+                $("#remarkDiv").before(html);
+	        }
+	    })
+	}
+
 
 
 	function deleteRemark(id) {
