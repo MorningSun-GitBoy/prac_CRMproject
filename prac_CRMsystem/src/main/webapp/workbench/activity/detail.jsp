@@ -64,65 +64,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 
 		//为保存按钮绑定事件，执行备注添加操作
-		$("#saveRemarkBtn").click(function () {
 
-			$.ajax({
-
-				url : "functions/activity/saveRemark.do",
-				data : {
-
-					"noteContent" : $.trim($("#remark").val()),
-					"activityId" : "${a.id}"
-
-				},
-				type : "post",
-				dataType : "json",
-				success : function (data) {
-
-					/*
-
-						data
-							{"success":true/false,"ar":{备注}}
-
-					 */
-
-					if(data.success){
-
-						//添加成功
-
-						//textarea文本域中的信息清空掉
-						$("#remark").val("");
-
-						//在textarea文本域上方新增一个div
-						var html = "";
-
-						html += '<div id="'+data.ar.id+'" class="remarkDiv" style="height: 60px;">';
-						html += '<img title="zhangsan" src="image/user-thumbnail.png" style="width: 30px; height:30px;">';
-						html += '<div style="position: relative; top: -40px; left: 40px;" >';
-						html += '<h5>'+data.ar.noteContent+'</h5>';
-						html += '<font color="gray">市场活动</font> <font color="gray">-</font> <b>${a.name}</b> <small style="color: gray;"> '+(data.ar.createTime)+' 由'+(data.ar.createBy)+'</small>';
-						html += '<div style="position: relative; left: 500px; top: -30px; height: 30px; width: 100px; display: none;">';
-						html += '<a class="myHref" href="javascript:void(0);"><span class="glyphicon glyphicon-edit" style="font-size: 20px; color: #FF0000;"></span></a>';
-						html += '&nbsp;&nbsp;&nbsp;&nbsp;';
-						html += '<a class="myHref" href="javascript:void(0);" onclick="deleteRemark(\''+data.ar.id+'\')"><span class="glyphicon glyphicon-remove" style="font-size: 20px; color: #FF0000;"></span></a>';
-						html += '</div>';
-						html += '</div>';
-						html += '</div>';
-
-						$("#remarkDiv").before(html);
-
-					}else{
-
-						alert("添加备注失败");
-
-					}
-
-
-				}
-
-			})
-
-		})
 
 
 		//为更新按钮绑定事件
@@ -175,59 +117,6 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 	});
 
-	function showRemarkList() {
-
-		$.ajax({
-
-			url : "functions/activity/getRemarkListByAid.do",
-			data : {
-
-				"activityId" : "${a.id}"
-
-			},
-			type : "get",
-			dataType : "json",
-			success : function (data) {
-
-				/*
-
-					data
-						[{备注1},{2},{3}]
-
-
-				 */
-
-				var html = "";
-
-				$.each(data,function (i,n) {
-
-					/*
-						javascript:void(0);
-							将超链接禁用，只能以触发事件的形式来操作
-					 */
-
-					html += '<div id="'+n.id+'" class="remarkDiv" style="height: 60px;">';
-					html += '<img title="zhangsan" src="image/user-thumbnail.png" style="width: 30px; height:30px;">';
-					html += '<div style="position: relative; top: -40px; left: 40px;" >';
-					html += '<h5 id="e'+n.id+'">'+n.noteContent+'</h5>';
-					html += '<font color="gray">市场活动</font> <font color="gray">-</font> <b>${a.name}</b> <small style="color: gray;" id="s'+n.id+'"> '+(n.editFlag==0?n.createTime:n.editTime)+' 由'+(n.editFlag==0?n.createBy:n.editBy)+'</small>';
-					html += '<div style="position: relative; left: 500px; top: -30px; height: 30px; width: 100px; display: none;">';
-					html += '<a class="myHref" href="javascript:void(0);" onclick="editRemark(\''+n.id+'\')"><span class="glyphicon glyphicon-edit" style="font-size: 20px; color: #FF0000;"></span></a>';
-					html += '&nbsp;&nbsp;&nbsp;&nbsp;';
-					html += '<a class="myHref" href="javascript:void(0);" onclick="deleteRemark(\''+n.id+'\')"><span class="glyphicon glyphicon-remove" style="font-size: 20px; color: #FF0000;"></span></a>';
-					html += '</div>';
-					html += '</div>';
-					html += '</div>';
-
-				})
-
-				$("#remarkDiv").before(html);
-
-			}
-
-		})
-
-	}
 
 
 	function deleteRemark(id) {
@@ -334,7 +223,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 	<!-- 大标题 -->
 	<div style="position: relative; left: 40px; top: -30px;">
 		<div class="page-header">
-			<h3>市场活动-${a.name} <small>${a.startDate} ~ ${a.endDate}</small></h3>
+			<h3>市场活动-${a.acname} <small>${a.startDate} ~ ${a.endDate}</small></h3>
 		</div>
 		<div style="position: relative; height: 50px; width: 250px;  top: -72px; left: 700px;">
 			<button type="button" class="btn btn-default" data-toggle="modal" data-target="#editActivityModal"><span class="glyphicon glyphicon-edit"></span> 编辑</button>

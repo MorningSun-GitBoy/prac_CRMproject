@@ -13,8 +13,8 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
     <script>
         $(function(){
             //设置默认顶层窗口
-            if(window.top!=window){
-                window.top = window.location;
+            if(window.top!=window.self){
+                window.top.location = window.self.location;
             }
             //页面加载完毕后，清空用户文本框中的内容
             $("#loginAct").val("");
