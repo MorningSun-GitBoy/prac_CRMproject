@@ -11,7 +11,7 @@ import com.neau.crm.web.service.ActivityService;
 import java.util.List;
 import java.util.Map;
 
-public class ActivityManageService implements ActivityService {
+public class ActivityManageService extends ActivityServiceImpl {
     private ActivityDao activityDao;
     private ActivityRemarkDao activityRemarkDao;
     private DeleteDao deleteDao;
@@ -42,17 +42,6 @@ public class ActivityManageService implements ActivityService {
         return false;
     }
 
-    @Override
-    public Activity getDetailById(String id) {
-        //方法弃用
-        return null;
-    }
-
-    @Override
-    public List<ActivityRemark> getRemarkListByAid(String id) {
-        //不再由他负责
-        return null;
-    }
     public void setActivityDao(ActivityDao activityDao) {
         this.activityDao = activityDao;
     }

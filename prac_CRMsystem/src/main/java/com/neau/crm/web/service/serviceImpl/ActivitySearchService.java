@@ -10,23 +10,9 @@ import com.neau.crm.web.service.ActivityService;
 import java.util.List;
 import java.util.Map;
 
-public class ActivitySearchService implements ActivityService {
+public class ActivitySearchService extends ActivityServiceImpl {
     private ActivityDao activityDao;
     private ActivityRemarkDao activityRemarkDao;
-    @Override
-    public boolean save(Activity ac) {
-        return false;
-    }
-
-    @Override
-    public PageInfo<Activity> pageList(Map<String, Object> parameters) {
-        return null;
-    }
-
-    @Override
-    public boolean deleteByIds(String[] ids, String optUsrId) {
-        return false;
-    }
 
     @Override
     public Activity getDetailById(String id) {
