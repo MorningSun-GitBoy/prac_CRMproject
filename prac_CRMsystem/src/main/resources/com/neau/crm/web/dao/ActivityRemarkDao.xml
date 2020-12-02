@@ -21,11 +21,4 @@
             #{aid}
         </foreach>
     </select>
-    <delete id="deleteByIds">
-        delete from tb_crm_activity_remark
-        where id in
-        <foreach collection="array" item="aid" open="(" separator="," close=")">
-            #{aid}
-        </foreach>
-    </delete>
 </mapper>

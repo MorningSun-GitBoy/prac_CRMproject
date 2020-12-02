@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neau.crm.web.dao.DeleteDao">
+    <insert id="insertActivities" flushCache="true">
+        insert into tb_crm_activity_del(
+            id,
+            acId,
+            acowner,
+            acname,
+            startDate,
+            endDate,
+            cost,
+            descriptions,
+            createTime,
+            createBy,
+            editTime,
+            editBy,
+            deletTime,
+            deletBy
+        )values
+        <foreach collection="list" item="delEntity" separator="," open="" close="">
+            (
+                #{delEntity.id},
+                #{delEntity.entity.id},
+                #{delEntity.entity.acowner},
+                #{delEntity.entity.acname},
+                #{delEntity.entity.startDate},
+                #{delEntity.entity.endDate},
+                #{delEntity.entity.cost},
+                #{delEntity.entity.descriptions},
+                #{delEntity.entity.createTime},
+                #{delEntity.entity.createBy},
+                #{delEntity.entity.editTime},
+                #{delEntity.entity.editBy},
+                #{delEntity.deletTime},
+                #{dleEntity.deletBy}
+            )
+        </foreach>
+    </insert>
+    <insert id="insertActivityRemarks" flushCache="true">
+        insert into tb_crm_activity_remark_del(
+        id,
+        acRemId,
+        noteContent,
+        createTime,
+        createBy,
+        editTime,
+        editBy,
+        editFlage,
+        activityId,
+        deletTime,
+        deletBy
+        )values
+        <foreach collection="list" separator="," item="delEntity" open="" close="">
+            (
+            #{delEntity.id},
+            #{delEntity.entity.id},
+            #{delEntity.entity.noteContent},
+            #{delEntity.entity.createTime},
+            #{delEntity.entity.createBy},
+            #{delEntity.entity.editTime},
+            #{delEntity.entity.editBy},
+            #{delEntity.entity.editFlage},
+            #{delEntity.entity.activityId},
+            #{delEntity.deletTime},
+            #{delEntity.deletBy}
+            )
+        </foreach>
+    </insert>
+    <delete id="deleteActivityByIds">
+        delete from tb_crm_activity where id in
+        <foreach collection="array" item="aid" open="(" separator="," close=")">
+            #{aid}
+        </foreach>
+    </delete>
+    <delete id="deleteActivityRemarkByIds">
+        delete from tb_crm_activity_remark
+        where id in
+        <foreach collection="array" item="aid" open="(" separator="," close=")">
+            #{aid}
+        </foreach>
+    </delete>
+</mapper>
