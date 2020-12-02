@@ -49,6 +49,9 @@ public class ActivityController extends HttpServlet {
             case "/functions/activity/delete.do":
                 deleteByIds(request,response);
                 break;
+            case "/functions/activity/selectUserListAndActivity.do":
+                selectUserListAndActivity(request,response);
+                break;
             case "/functions/activity/detail.do":
                 showDetail(request,response);
                 break;
@@ -127,5 +130,9 @@ public class ActivityController extends HttpServlet {
         String id = request.getParameter("activityId");
         List<ActivityRemark> arList = as.getRemarkListByAid(id);
         PrintJson.printJsonObj(response,arList);
+    }
+    private void selectUserListAndActivity(HttpServletRequest request,HttpServletResponse response){
+        System.out.println("为修改操作查询用户列表和对应活动");
+
     }
 }
