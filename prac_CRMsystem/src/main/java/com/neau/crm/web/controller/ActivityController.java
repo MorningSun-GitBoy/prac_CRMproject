@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -125,14 +126,23 @@ public class ActivityController extends HttpServlet {
     private void showDetail(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
         System.out.println("进入展示市场活动详情页面");
         String id = request.getParameter("id");
-        Activity a = asManager.getDetailById(id);
+        Activity a = asSearcher.getDetailById(id);
+        //拿到a中的createBy、editBy和acowner，查找对应的
+        Map<String,String> propertiesMap = new HashMap<String,String>();
+        propertiesMap.put("acowner",a.getAcowner());
+        propertiesMap.put("createBy",a.getCreateBy());
+        propertiesMap.put("editBy",a.getEditBy());
+        Map<String,String> resultMap = usrSearcher.getNameMap(propertiesMap);
+        a.setAcowner(resultMap.get("acowner"));
+        a.setCreateBy(resultMap.get("createBy"));
+        a.setEditBy(resultMap.get("editBy"));
         request.getSession().setAttribute("a",a);
         request.getRequestDispatcher("/workbench/activity/detail.jsp").forward(request,response);
     }
     private void getRemarkListByAid(HttpServletRequest request,HttpServletResponse response){
         System.out.println("进入市场活动备注查找方法");
         String id = request.getParameter("activityId");
-        List<ActivityRemark> arList = asManager.getRemarkListByAid(id);
+        List<ActivityRemark> arList = asSearcher.getRemarkListByAid(id);
         PrintJson.printJsonObj(response,arList);
     }
     private void selectUserListAndActivity(HttpServletRequest request,HttpServletResponse response){

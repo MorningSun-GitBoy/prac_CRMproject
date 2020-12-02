@@ -30,7 +30,9 @@ public class ActivitySearchService implements ActivityService {
 
     @Override
     public Activity getDetailById(String id) {
-        return null;
+        String[] ids = {id};
+        List<Activity> ac = activityDao.selectByIds(ids);
+        return ac.get(0);
     }
 
     @Override

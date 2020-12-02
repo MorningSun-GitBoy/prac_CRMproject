@@ -9,4 +9,10 @@
     <select id="selectAllUser" resultType="com.neau.crm.web.domain.SysUser">
         select * from tb_crm_user
     </select>
+    <select id="selectNameByIds" resultType="java.util.HashMap">
+        select id , uname where id in
+        <foreach collection="array" item="aid" open="(" close=")" separator="," >
+            #{aid}
+        </foreach>
+    </select>
 </mapper>

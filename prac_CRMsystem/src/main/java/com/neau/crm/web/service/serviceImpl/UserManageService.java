@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class UserManageService  implements UserService {
+public class UserManageService  extends UserServiceImpl {
     private UserDao userDao;
     private DeleteDao deleteDao;
     @Override
@@ -32,10 +32,6 @@ public class UserManageService  implements UserService {
         return user;
     }
 
-    @Override
-    public List<SysUser> selectAllUser() {
-        return null;
-    }
     public void setUserDao(UserDao userDao) {
         this.userDao = userDao;
     }
