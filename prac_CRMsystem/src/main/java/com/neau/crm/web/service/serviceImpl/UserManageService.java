@@ -2,7 +2,7 @@ package com.neau.crm.web.service.serviceImpl;
 
 import com.neau.crm.exceptions.LoginException;
 import com.neau.crm.utils.DateTimeUtils;
-import com.neau.crm.utils.ServerSessionUtils;
+import com.neau.crm.web.dao.DeleteDao;
 import com.neau.crm.web.dao.UserDao;
 import com.neau.crm.web.domain.SysUser;
 import com.neau.crm.web.service.UserService;
@@ -11,18 +11,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class UserServiceImpl implements UserService {
-    private UserDao userDao = ServerSessionUtils.getSqlSession().getMapper(UserDao.class);
+public class UserManageService  implements UserService {
+    private UserDao userDao;
+    private DeleteDao deleteDao;
     @Override
-    public SysUser login (String loginAct, String loginPwd, String ip) throws LoginException {
-        /*System.out.println(loginAct);
-        System.out.println(loginPwd);
-        System.out.println(ip);*/
+    public SysUser login(String loginAct, String loginPwd, String ip) throws LoginException {
         Map<String,String> logMap = new HashMap<String,String>();
         logMap.put("loginAct",loginAct);
         logMap.put("loginPwd",loginPwd);
         SysUser user = userDao.login(logMap);
-        //System.out.println(user.getAllowIps());
         if(user==null){//数据库中没有该用户名和密码的记录
             throw new LoginException("用户名或密码错误");
         }else if(user.getExpireTime().compareTo(DateTimeUtils.getSysTime())<=0){//查看此时是否超过失效时间
@@ -37,11 +34,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<SysUser> selectAllUser() {
-        return userDao.selectAllUser();
+        return null;
     }
-
     public void setUserDao(UserDao userDao) {
         this.userDao = userDao;
     }
-
+    public void setDeleteDao(DeleteDao deleteDao) {
+        this.deleteDao = deleteDao;
+    }
 }

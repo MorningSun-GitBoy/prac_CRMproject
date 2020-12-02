@@ -19,9 +19,9 @@ import java.util.Map;
 
 public class ActivityServiceImpl implements ActivityService {
     private ActivityDao activityDao = ServerSessionUtils.getSqlSession().getMapper(ActivityDao.class);
-    private ActivityDelDao activityDelDao = ServerSessionUtils.getSqlSession().getMapper(ActivityDelDao.class);
+    //private ActivityDelDao activityDelDao = ServerSessionUtils.getSqlSession().getMapper(ActivityDelDao.class);
     private ActivityRemarkDao activityRemarkDao = ServerSessionUtils.getSqlSession().getMapper(ActivityRemarkDao.class);
-    private ActivityRemarkDelDao activityRemarkDelDao = ServerSessionUtils.getSqlSession().getMapper(ActivityRemarkDelDao.class);
+    //private ActivityRemarkDelDao activityRemarkDelDao = ServerSessionUtils.getSqlSession().getMapper(ActivityRemarkDelDao.class);
 
     @Override
     public boolean save(Activity activity) {
@@ -46,6 +46,7 @@ public class ActivityServiceImpl implements ActivityService {
 
     @Override
     public boolean deleteByIds(String[] ids,String optUsrId) {
+        /*
         //查询出需要删除的备注
         String[] acRemIds = activityRemarkDao.selectId(ids);//备注id
         int remNum = acRemIds.length;//备注数目
@@ -78,7 +79,7 @@ public class ActivityServiceImpl implements ActivityService {
          * 且
          * 活动数=插入活动数=删除活动数
          */
-        return (remNum==insRemNum || insRemNum==delRemNum)||(insActNum==ids.length || insActNum==delActNum);
+        return true /*(remNum==insRemNum || insRemNum==delRemNum)||(insActNum==ids.length || insActNum==delActNum)*/;
     }
 
     @Override
@@ -95,15 +96,15 @@ public class ActivityServiceImpl implements ActivityService {
         this.activityDao = activityDao;
     }
 
-    public void setActivityDelDao(ActivityDelDao activityDelDao) {
+    /*public void setActivityDelDao(ActivityDelDao activityDelDao) {
         this.activityDelDao = activityDelDao;
-    }
+    }*/
 
     public void setActivityRemarkDao(ActivityRemarkDao activityRemarkDao) {
         this.activityRemarkDao = activityRemarkDao;
     }
 
-    public void setActivityRemarkDelDao(ActivityRemarkDelDao activityRemarkDelDao) {
+   /* public void setActivityRemarkDelDao(ActivityRemarkDelDao activityRemarkDelDao) {
         this.activityRemarkDelDao = activityRemarkDelDao;
-    }
+    }*/
 }

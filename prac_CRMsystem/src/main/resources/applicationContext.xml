@@ -25,14 +25,23 @@
                 <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
                 <!--<property name="configLocation" value="classpath:mybatis-config.xml"/>-->
         </bean>
-        <bean id="userService" class="com.neau.crm.web.service.serviceImpl.UserServiceImpl">
+        <bean id="userManager" class="com.neau.crm.web.service.serviceImpl.UserManageService">
                 <property name="userDao" ref="userDao"/>
-                <property name="userDelDao" ref="userDelDao"/>
+                <!--<property name="userDelDao" ref="userDelDao"/>-->
+                <property name="deleteDao" ref="deleteDao"/>
         </bean>
-        <bean id="activityService" class="com.neau.crm.web.service.serviceImpl.ActivityServiceImpl">
+        <bean id="userSearcher" class="com.neau.crm.web.service.serviceImpl.UserSearchService">
+                <property name="userDao" ref="userDao"/>
+        </bean>
+        <bean id="activityManager" class="com.neau.crm.web.service.serviceImpl.ActivityManageService">
                 <property name="activityDao" ref="activityDao"/>
-                <property name="activityDelDao" ref="activityDelDao"/>
+                <!--<property name="activityDelDao" ref="activityDelDao"/>-->
                 <property name="activityRemarkDao" ref="activityRemarkDao"/>
-                <property name="activityRemarkDelDao" ref="activityRemarkDelDao"/>
+                <!--<property name="activityRemarkDelDao" ref="activityRemarkDelDao"/>-->
+                <property name="deleteDao" ref="deleteDao"/>
+        </bean>
+        <bean id="activitySearcher" class="com.neau.crm.web.service.serviceImpl.ActivitySearchService">
+                <property name="activityDao" ref="activityDao"/>
+                <property name="activityRemarkDao" ref="activityRemarkDao"/>
         </bean>
 </beans>

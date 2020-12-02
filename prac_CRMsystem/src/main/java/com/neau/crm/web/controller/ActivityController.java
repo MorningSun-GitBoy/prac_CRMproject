@@ -8,8 +8,8 @@ import com.neau.crm.web.domain.ActivityRemark;
 import com.neau.crm.web.domain.SysUser;
 import com.neau.crm.web.domain.vo.PageInfo;
 import com.neau.crm.web.service.ActivityService;
-import com.neau.crm.web.service.serviceImpl.ActivityServiceImpl;
-import com.neau.crm.web.service.serviceImpl.UserServiceImpl;
+import com.neau.crm.web.service.UserService;
+import com.neau.crm.web.service.serviceImpl.*;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
@@ -23,13 +23,17 @@ import java.util.List;
 import java.util.Map;
 
 public class ActivityController extends HttpServlet {
-    ActivityService as;
+    private ActivityService asManager;
+    private ActivityService asSearcher;
+    private UserService usrSearcher;
 
     @Override
     public void init() throws ServletException {
         super.init();
         ApplicationContext context = WebApplicationContextUtils.getRequiredWebApplicationContext(getServletContext());
-        as = context.getBean("activityService", ActivityServiceImpl.class);
+        asManager = context.getBean("activityManager", ActivityManageService.class);
+        asSearcher = context.getBean("activitySearcher", ActivitySearchService.class);
+        usrSearcher = context.getBean("userSearcher", UserSearchService.class);
     }
 
     @Override
@@ -83,7 +87,7 @@ public class ActivityController extends HttpServlet {
         ac.setDescriptions(description);
         ac.setCreateTime(createTime);
         ac.setCreateBy(createBy);
-        boolean flag = as.save(ac);
+        boolean flag = asManager.save(ac);
         //System.out.println(flag);
         PrintJson.printJsonFlag(response,flag);
     }
@@ -109,26 +113,26 @@ public class ActivityController extends HttpServlet {
         parameter.put("endDate",endDate);
         parameter.put("skipNum",skipNum);
         parameter.put("pageSize",Integer.valueOf(pageSize));
-        PageInfo<Activity> vo = as.pageList(parameter);
+        PageInfo<Activity> vo = asManager.pageList(parameter);
         PrintJson.printJsonObj(rep,vo);
     }
     private void deleteByIds(HttpServletRequest request,HttpServletResponse response){
         System.out.println("进行删除市场活动操作");
         String ids[] = request.getParameterValues("id");
-        boolean flag = as.deleteByIds(ids,((SysUser)request.getSession().getAttribute("user")).getId());
+        boolean flag = asManager.deleteByIds(ids,((SysUser)request.getSession().getAttribute("user")).getId());
         PrintJson.printJsonFlag(response,flag);
     }
     private void showDetail(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
         System.out.println("进入展示市场活动详情页面");
         String id = request.getParameter("id");
-        Activity a = as.getDetailById(id);
+        Activity a = asManager.getDetailById(id);
         request.getSession().setAttribute("a",a);
         request.getRequestDispatcher("/workbench/activity/detail.jsp").forward(request,response);
     }
     private void getRemarkListByAid(HttpServletRequest request,HttpServletResponse response){
         System.out.println("进入市场活动备注查找方法");
         String id = request.getParameter("activityId");
-        List<ActivityRemark> arList = as.getRemarkListByAid(id);
+        List<ActivityRemark> arList = asManager.getRemarkListByAid(id);
         PrintJson.printJsonObj(response,arList);
     }
     private void selectUserListAndActivity(HttpServletRequest request,HttpServletResponse response){

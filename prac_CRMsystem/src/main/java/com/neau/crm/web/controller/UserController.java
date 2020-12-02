@@ -7,6 +7,7 @@ import com.neau.crm.utils.PrintJson;
 import com.neau.crm.web.domain.SysUser;
 import com.neau.crm.web.service.UserService;
 import com.neau.crm.web.service.serviceImpl.UserServiceImpl;
+import org.apache.catalina.User;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
@@ -20,13 +21,14 @@ import java.util.List;
 import java.util.Map;
 
 public class UserController extends HttpServlet {
-    private UserService us;
+    private UserService usrManager;
+    private UserService usrSearcher;
 
     @Override
     public void init() throws ServletException {
         super.init();
         ApplicationContext context = WebApplicationContextUtils.getRequiredWebApplicationContext(getServletContext());
-        us = context.getBean("userService",UserServiceImpl.class);
+        usrManager = context.getBean("userService",UserServiceImpl.class);
     }
 
     @Override
@@ -56,7 +58,7 @@ public class UserController extends HttpServlet {
         //us = new UserServiceImpl();//需改为代理类
         //提取User对象，并放入Session域
         try {
-            SysUser user = us.login(loginAct, loginPwd, ip);
+            SysUser user = usrManager.login(loginAct, loginPwd, ip);
             req.getSession().setAttribute("user", user);
             String json = "{\"success\":true}";
             rep.getWriter().print(json);
@@ -75,7 +77,7 @@ public class UserController extends HttpServlet {
     private void selectAllUser(HttpServletRequest req,HttpServletResponse rep){
         System.out.println("查找所有用户");
         String UUID = ((SysUser)req.getSession().getAttribute("user")).getId();//以后涉及权限的时候有用
-        List<SysUser> users = us.selectAllUser();
+        List<SysUser> users = usrSearcher.selectAllUser();
         PrintJson.printJsonObj(rep,users);
     }
 }
