@@ -1,13 +1,12 @@
 package com.neau.crm.web.controller;
 
 import com.neau.crm.exceptions.LoginException;
-import com.neau.crm.utils.DateTimeUtils;
 import com.neau.crm.utils.MD5Utils;
 import com.neau.crm.utils.PrintJson;
 import com.neau.crm.web.domain.SysUser;
 import com.neau.crm.web.service.UserService;
-import com.neau.crm.web.service.serviceImpl.UserServiceImpl;
-import org.apache.catalina.User;
+import com.neau.crm.web.service.serviceImpl.UserManageService;
+import com.neau.crm.web.service.serviceImpl.UserSearchService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
@@ -28,7 +27,8 @@ public class UserController extends HttpServlet {
     public void init() throws ServletException {
         super.init();
         ApplicationContext context = WebApplicationContextUtils.getRequiredWebApplicationContext(getServletContext());
-        usrManager = context.getBean("userService",UserServiceImpl.class);
+        usrManager = context.getBean("userManager", UserManageService.class);
+        usrSearcher = context.getBean("userSearcher", UserSearchService.class);
     }
 
     @Override

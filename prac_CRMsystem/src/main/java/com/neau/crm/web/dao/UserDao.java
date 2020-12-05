@@ -8,5 +8,5 @@ import java.util.Map;
 public interface UserDao {
     SysUser login(Map<String,String> map);
     List<SysUser> selectAllUser();
-    List<Map<String,String>> selectNameByIds(String[] ids);
+    List<Map<String,String>> selectNameByIds(Object[] ids);
 }

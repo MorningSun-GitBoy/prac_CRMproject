@@ -136,6 +136,7 @@ public class ActivityController extends HttpServlet {
         a.setAcowner(resultMap.get("acowner"));
         a.setCreateBy(resultMap.get("createBy"));
         a.setEditBy(resultMap.get("editBy"));
+        System.out.println(a.getAcowner()+""+a.getCreateBy()+""+a.getEditBy());
         request.getSession().setAttribute("a",a);
         request.getRequestDispatcher("/workbench/activity/detail.jsp").forward(request,response);
     }

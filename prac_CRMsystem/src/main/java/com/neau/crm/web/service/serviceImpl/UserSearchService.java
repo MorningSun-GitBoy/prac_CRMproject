@@ -18,20 +18,22 @@ public class UserSearchService extends UserServiceImpl {
     @Override
     public Map<String, String> getNameMap(Map<String, String> idMap) {
         Map<String,String> idNameMap = new HashMap<String,String>();
-        String[] keyArray = (String[]) idMap.keySet().toArray();
+        Object[] keyArray = idMap.keySet().toArray();
         List<String> idList = new ArrayList<String>();
-        for(String key:keyArray){
+        for(Object key:keyArray){
             if(idMap.get(key)!=null){
                 idList.add(idMap.get(key));
             }
         }
-        List<Map<String,String>> nameList = userDao.selectNameByIds((String[]) idList.toArray());
-        int i = 0;
+        System.out.println(idList);
+        List<Map<String,String>> nameList = userDao.selectNameByIds(idList.toArray());
         for(Map<String,String> nameMap:nameList){
-            idNameMap.putAll(nameMap);
+            //System.out.println(nameMap);
+            idNameMap.put(nameMap.get("id"),nameMap.get("uname"));
         }
-        for(String key:keyArray){
-            idMap.put(key,idNameMap.get(idMap.get(key)));
+        //System.out.println(idNameMap);
+        for(Object key:keyArray){
+            idMap.put((String)key,idNameMap.get(idMap.get(key)));
             //将idMap中的id拿出，从idNameMap中寻找name，并按原键值对赋值
         }
         return idMap;
