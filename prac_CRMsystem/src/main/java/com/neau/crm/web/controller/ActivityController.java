@@ -148,6 +148,13 @@ public class ActivityController extends HttpServlet {
     }
     private void selectUserListAndActivity(HttpServletRequest request,HttpServletResponse response){
         System.out.println("为修改操作查询用户列表和对应活动");
+        String id = request.getParameter("id");
+        List<SysUser> usrList = usrSearcher.selectAllUser();
+        Activity a = asSearcher.getDetailById(id);
+        Map<String,Object> map = new HashMap<String,Object>();
+        map.put("uList",usrList);
+        map.put("a",a);
+        PrintJson.printJsonObj(response,map);
 
     }
 }
