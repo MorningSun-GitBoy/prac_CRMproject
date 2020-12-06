@@ -358,7 +358,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 						$.each(data.uList,function (i,n) {
 
-							html += "<option value='"+n.id+"'>"+n.name+"</option>";
+							html += "<option value='"+n.id+"'>"+n.uname+"</option>";
 
 						})
 
@@ -367,12 +367,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 						//处理单条activity
 						$("#edit-id").val(data.a.id);
-						$("#edit-name").val(data.a.name);
-						$("#edit-owner").val(data.a.owner);
+						$("#edit-name").val(data.a.acname);
+						$("#edit-owner").val(data.a.acowner);
 						$("#edit-startDate").val(data.a.startDate);
 						$("#edit-endDate").val(data.a.endDate);
 						$("#edit-cost").val(data.a.cost);
-						$("#edit-description").val(data.a.description);
+						$("#edit-description").val(data.a.descriptions);
 
 						//所有的值都填写好之后，打开修改操作的模态窗口
 						$("#editActivityModal").modal("show");
