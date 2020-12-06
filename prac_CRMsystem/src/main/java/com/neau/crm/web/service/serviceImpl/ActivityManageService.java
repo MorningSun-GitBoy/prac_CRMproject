@@ -42,6 +42,11 @@ public class ActivityManageService extends ActivityServiceImpl {
         return false;
     }
 
+    @Override
+    public boolean updateActivity(Activity activity) {
+        int count = activityDao.update(activity);
+        return count == 1;
+    }
     public void setActivityDao(ActivityDao activityDao) {
         this.activityDao = activityDao;
     }

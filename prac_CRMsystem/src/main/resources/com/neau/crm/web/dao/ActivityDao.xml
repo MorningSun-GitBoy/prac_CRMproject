@@ -98,4 +98,16 @@
             #{aid}
         </foreach>
     </select>
+    <update id="update" >
+        update tb_crm_activity set
+            acowner=#{acowner},
+            acname=#{acname},
+            startDate=#{startDate},
+            endDate=#{endDate},
+            cost=#{cost},
+            descriptions=#{descriptions},
+            editTime=#{editTime},
+            editBy=#{editBy}
+        where id=#{id}
+    </update>
 </mapper>

@@ -57,6 +57,9 @@ public class ActivityController extends HttpServlet {
             case "/functions/activity/selectUserListAndActivity.do":
                 selectUserListAndActivity(request,response);
                 break;
+            case "/functions/activity/update.do":
+                updateActivity(request,response);
+                break;
             case "/functions/activity/detail.do":
                 showDetail(request,response);
                 break;
@@ -155,5 +158,20 @@ public class ActivityController extends HttpServlet {
         map.put("uList",usrList);
         map.put("a",a);
         PrintJson.printJsonObj(response,map);
+    }
+    private void updateActivity(HttpServletRequest request,HttpServletResponse response){
+        System.out.println("更新市场活动");
+        Activity a = new Activity();
+        a.setId(request.getParameter("id"));
+        a.setAcname(request.getParameter("acname"));
+        a.setAcowner(request.getParameter("acowner"));
+        a.setStartDate(request.getParameter("startDate"));
+        a.setEndDate(request.getParameter("endDate"));
+        a.setCost(request.getParameter("cost"));
+        a.setDescriptions(request.getParameter("descriptions"));
+        a.setEditBy(((SysUser)request.getSession().getAttribute("user")).getId());
+        a.setEditTime(DateTimeUtils.getSysTime());
+        boolean flag = asManager.updateActivity(a);
+        PrintJson.printJsonFlag(response,flag);
     }
 }

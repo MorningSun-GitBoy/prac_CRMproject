@@ -13,4 +13,5 @@ public interface ActivityService {
     public boolean deleteByIds(String[] ids,String optUsrId);
     public Activity getDetailById(String id);
     public List<ActivityRemark> getRemarkListByAid(String id);
+    public boolean updateActivity(Activity activity);
 }

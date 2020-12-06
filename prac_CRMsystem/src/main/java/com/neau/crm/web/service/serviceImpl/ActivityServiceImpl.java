@@ -37,4 +37,9 @@ public class ActivityServiceImpl implements ActivityService {
     public List<ActivityRemark> getRemarkListByAid(String id) {
         return null;
     }
+
+    @Override
+    public boolean updateActivity(Activity activity) {
+        return false;
+    }
 }

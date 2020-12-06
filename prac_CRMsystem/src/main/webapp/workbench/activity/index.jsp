@@ -400,12 +400,12 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 				data : {
 
 					"id" : $.trim($("#edit-id").val()),
-					"owner" : $.trim($("#edit-owner").val()),
-					"name" : $.trim($("#edit-name").val()),
+					"acowner" : $.trim($("#edit-owner").val()),
+					"acname" : $.trim($("#edit-name").val()),
 					"startDate" : $.trim($("#edit-startDate").val()),
 					"endDate" : $.trim($("#edit-endDate").val()),
 					"cost" : $.trim($("#edit-cost").val()),
-					"description" : $.trim($("#edit-description").val())
+					"descriptions" : $.trim($("#edit-description").val())
 
 				},
 				type : "post",
