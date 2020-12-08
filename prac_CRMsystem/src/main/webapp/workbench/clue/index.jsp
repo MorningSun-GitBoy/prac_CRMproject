@@ -35,7 +35,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 			$.ajax({
 
-				url : "workbench/clue/getUserList.do",
+				url : "functions/clue/getUserList.do",
 				type : "get",
 				dataType : "json",
 				success : function (data) {
@@ -75,7 +75,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 			$.ajax({
 
-				url : "workbench/clue/save.do",
+				url : "functions/clue/save.do",
 				data : {
 
 					"fullname" : $.trim($("#create-fullname").val()),

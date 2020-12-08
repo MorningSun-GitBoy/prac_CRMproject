@@ -65,7 +65,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
 
 				$.ajax({
 
-					url : "workbench/clue/getActivityListByNameAndNotByClueId.do",
+					url : "functions/clue/getActivityListByNameAndNotByClueId.do",
 					data : {
 
 						"aname" : $.trim($("#aname").val()),

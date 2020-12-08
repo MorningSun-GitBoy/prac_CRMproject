@@ -44,4 +44,12 @@
                 <property name="activityDao" ref="activityDao"/>
                 <property name="activityRemarkDao" ref="activityRemarkDao"/>
         </bean>
+        <bean id="clueManager" class="com.neau.crm.web.service.serviceImpl.ClueManageService">
+                <!--<property name="activityDao" ref="activityDao"/>
+                <property name="activityRemarkDao" ref="activityRemarkDao"/>-->
+        </bean>
+        <bean id="clueSearcher" class="com.neau.crm.web.service.serviceImpl.ClueSearchService">
+                <!--<property name="activityDao" ref="activityDao"/>
+                <property name="activityRemarkDao" ref="activityRemarkDao"/>-->
+        </bean>
 </beans>
