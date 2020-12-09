@@ -66,5 +66,14 @@
   <servlet-mapping>
     <servlet-name>ClueController</servlet-name>
     <url-pattern>/functions/clue/pageList.do</url-pattern>
+    <url-pattern>/functions/clue/selectUserListAndClue.do</url-pattern>
+    <url-pattern>/functions/clue/save.do</url-pattern>
+    <url-pattern>/functions/clue/delete.do</url-pattern>
+    <url-pattern>/functions/clue/update.do</url-pattern>
+    <url-pattern>/functions/clue/detail.do</url-pattern>
+    <url-pattern>/functions/clue/saveRemark.do</url-pattern>
+    <url-pattern>/functions/clue/updateRemark.do</url-pattern>
+    <url-pattern>/functions/clue/getRemarkListByAid.do</url-pattern>
+    <url-pattern>/functions/clue/deleteRemark.do</url-pattern>
   </servlet-mapping>
 </web-app>

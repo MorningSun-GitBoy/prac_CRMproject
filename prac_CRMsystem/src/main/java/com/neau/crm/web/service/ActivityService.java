@@ -14,4 +14,7 @@ public interface ActivityService {
     public Activity getDetailById(String id);
     public List<ActivityRemark> getRemarkListByAid(String id);
     public boolean updateActivity(Activity activity);
+    public boolean saveActivityRemark(ActivityRemark activityRemark);
+    public boolean updateActivityRemark(ActivityRemark activityRemark);
+    public boolean deleteRemarkById(String id,String optUser);
 }

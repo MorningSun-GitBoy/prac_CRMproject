@@ -42,4 +42,19 @@ public class ActivityServiceImpl implements ActivityService {
     public boolean updateActivity(Activity activity) {
         return false;
     }
+
+    @Override
+    public boolean saveActivityRemark(ActivityRemark activityRemark) {
+        return false;
+    }
+
+    @Override
+    public boolean updateActivityRemark(ActivityRemark activityRemark) {
+        return false;
+    }
+
+    @Override
+    public boolean deleteRemarkById(String id,String optUser) {
+        return false;
+    }
 }

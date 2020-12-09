@@ -8,9 +8,10 @@ public class DelContainer<E> {
     public DelContainer(){
 
     }
-    public DelContainer(String id,String deletTime,String deletBy){
+    public DelContainer(String id,String deletTime,E entity,String deletBy){
         this.id = id;
         this.deletTime = deletTime;
+        this.entity = entity;
         this.deletBy = deletBy;
     }
 

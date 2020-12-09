@@ -35,7 +35,7 @@
                 #{delEntity.entity.editTime},
                 #{delEntity.entity.editBy},
                 #{delEntity.deletTime},
-                #{dleEntity.deletBy}
+                #{delEntity.deletBy}
             )
         </foreach>
     </insert>

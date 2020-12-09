@@ -65,6 +65,15 @@ public class ActivityController extends HttpServlet {
             case "/functions/activity/getRemarkListByAid.do":
                 getRemarkListByAid(request,response);
                 break;
+            case "/functions/activity/saveRemark.do":
+                saveRemark(request,response);
+                break;
+            case "/functions/activity/updateRemark.do":
+                updateRemark(request,response);
+                break;
+            case "/functions/activity/deleteRemark.do":
+                deleteRemark(request,response);
+                break;
             default:
                 System.out.println("出现一个奇怪的问题");
         }
@@ -173,4 +182,37 @@ public class ActivityController extends HttpServlet {
         boolean flag = asManager.updateActivity(a);
         PrintJson.printJsonFlag(response,flag);
     }
+
+    private void deleteRemark(HttpServletRequest request, HttpServletResponse response) {
+        String id = request.getParameter("id");
+        boolean flag = asManager.deleteRemarkById(id,((SysUser)request.getSession().getAttribute("user")).getId());
+        PrintJson.printJsonFlag(response,flag);
+    }
+
+    private void updateRemark(HttpServletRequest request, HttpServletResponse response) {
+        ActivityRemark ar = new ActivityRemark();
+        ar.setId(request.getParameter("id"));
+        ar.setNoteContent(request.getParameter("noteContent"));
+        ar.setEditBy(((SysUser)request.getSession().getAttribute("user")).getId());
+        ar.setEditFlage("1");
+        ar.setEditTime(DateTimeUtils.getSysTime());
+        Activity a = (Activity)request.getSession().getAttribute("a");
+        ar.setActivityId(a.getId());
+        boolean flag = asManager.updateActivityRemark(ar);
+        PrintJson.printJsonFlag(response,flag);
+    }
+
+    private void saveRemark(HttpServletRequest request, HttpServletResponse response) {
+        ActivityRemark ar = new ActivityRemark();
+        ar.setId(UUIDUtils.getUUID());
+        ar.setNoteContent(request.getParameter("noteContent"));
+        ar.setCreateBy(request.getParameter("activityId"));
+        ar.setCreateTime(DateTimeUtils.getSysTime());
+        ar.setEditFlage("0");
+        Map<String,Object> resultMap = new HashMap<String,Object>();
+        resultMap.put("success",asManager.saveActivityRemark(ar));
+        resultMap.put("ar",ar);
+        PrintJson.printJsonObj(response,resultMap);
+    }
+
 }

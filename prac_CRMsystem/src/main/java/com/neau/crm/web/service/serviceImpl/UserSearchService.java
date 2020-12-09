@@ -22,10 +22,11 @@ public class UserSearchService extends UserServiceImpl {
         List<String> idList = new ArrayList<String>();
         for(Object key:keyArray){
             if(idMap.get(key)!=null){
-                idList.add(idMap.get(key));
+                if(!idList.contains(idMap.get(key)))
+                    idList.add(idMap.get(key));
             }
         }
-        System.out.println(idList);
+        //System.out.println(idList);
         List<Map<String,String>> nameList = userDao.selectNameByIds(idList.toArray());
         for(Map<String,String> nameMap:nameList){
             //System.out.println(nameMap);
