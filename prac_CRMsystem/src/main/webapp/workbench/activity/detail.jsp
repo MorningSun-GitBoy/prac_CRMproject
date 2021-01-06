@@ -89,7 +89,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                     	html += '<img title="zhangsan" src="image/user-thumbnail.png" style="width: 30px; height:30px;">';
                     	html += '<div style="position: relative; top: -40px; left: 40px;" >';
                     	html += '<h5>'+data.ar.noteContent+'</h5>';
-                    	html += '<font color="gray">市场活动</font> <font color="gray">-</font> <b>${a.name}</b> <small style="color: gray;"> '+(data.ar.createTime)+' 由'+(data.ar.createBy)+'</small>';
+                    	html += '<font color="gray">市场活动</font> <font color="gray">-</font> <b>${a.acname}</b> <small style="color: gray;"> '+(data.ar.createTime)+' 由'+(data.ar.createBy)+'</small>';
                     	html += '<div style="position: relative; left: 500px; top: -30px; height: 30px; width: 100px; display: none;">';
                     	html += '<a class="myHref" href="javascript:void(0);"><span class="glyphicon glyphicon-edit" style="font-size: 20px; color: #FF0000;"></span></a>';
                     	html += '&nbsp;&nbsp;&nbsp;&nbsp;';
@@ -107,7 +107,7 @@ String basePath = request.getScheme() + "://" + request.getServerName() + ":" + 
                     }
                 }
             })
-        }
+        })
 
 
 		//为更新按钮绑定事件

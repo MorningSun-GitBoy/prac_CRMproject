@@ -15,4 +15,7 @@
             #{aid}
         </foreach>
     </select>
+    <select id="selectNameById" resultType="java.lang.String">
+        select uname from tb_crm_user where id = #{id}
+    </select>
 </mapper>

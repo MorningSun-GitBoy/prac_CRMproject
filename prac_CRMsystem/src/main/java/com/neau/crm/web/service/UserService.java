@@ -10,4 +10,5 @@ public interface UserService {
     public SysUser login (String loginAct,String loginPwd,String ip) throws LoginException;
     public List<SysUser> selectAllUser();
     public Map<String,String> getNameMap(Map<String,String> idMap);
+    public String getNameById(String id);
 }

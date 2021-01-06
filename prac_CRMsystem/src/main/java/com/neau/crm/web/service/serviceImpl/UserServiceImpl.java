@@ -24,4 +24,9 @@ public class UserServiceImpl implements UserService {
     public Map<String, String> getNameMap(Map<String, String> idMap) {
         return null;
     }
+
+    @Override
+    public String getNameById(String id) {
+        return null;
+    }
 }

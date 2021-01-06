@@ -40,6 +40,11 @@ public class UserSearchService extends UserServiceImpl {
         return idMap;
     }
 
+    @Override
+    public String getNameById(String id) {
+        return userDao.selectNameById(id);
+    }
+
     public void setUserDao(UserDao userDao) {
         this.userDao = userDao;
     }

@@ -155,6 +155,7 @@ public class ActivityController extends HttpServlet {
         System.out.println("进入市场活动备注查找方法");
         String id = request.getParameter("activityId");
         List<ActivityRemark> arList = asSearcher.getRemarkListByAid(id);
+        //更改createBy editBy
         PrintJson.printJsonObj(response,arList);
     }
     private void selectUserListAndActivity(HttpServletRequest request,HttpServletResponse response){
@@ -206,11 +207,13 @@ public class ActivityController extends HttpServlet {
         ActivityRemark ar = new ActivityRemark();
         ar.setId(UUIDUtils.getUUID());
         ar.setNoteContent(request.getParameter("noteContent"));
-        ar.setCreateBy(request.getParameter("activityId"));
+        ar.setCreateBy(((SysUser)request.getSession().getAttribute("user")).getId());
         ar.setCreateTime(DateTimeUtils.getSysTime());
         ar.setEditFlage("0");
+        ar.setActivityId(request.getParameter("activityId"));
         Map<String,Object> resultMap = new HashMap<String,Object>();
         resultMap.put("success",asManager.saveActivityRemark(ar));
+        ar.setCreateBy(usrSearcher.getNameById(ar.getCreateBy()));
         resultMap.put("ar",ar);
         PrintJson.printJsonObj(response,resultMap);
     }
